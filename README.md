@@ -20,7 +20,7 @@ There are four different kinds of artifacts :
 
 * `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` : Full portable release of Brave as a setup. **Recommended way**!
 * `brave-portable-{ia32,x64}-x.x.x-x.{7z,zip}` : Full portable release of Brave as an archive.
-* `brave-portable-{ia32,x64}.exe` : Only the portable binary (must be dropped in the brave folder near `brave.exe` and renamed `brave-portable.exe`)
+* `brave-portable-{ia32,x64}.exe` : Only the portable binary (must be renamed `brave-portable.exe`)
 * `BraveSetup-{ia32,x64}-x.x.x.exe` : The original setup from the [official website](https://brave.com/downloads.html).
 
 For a **fresh installation**, install `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` where you want then run `brave-portable.exe`.
@@ -38,7 +38,7 @@ The most basic way to show your support is to star :star2: the project, or to ra
 Any funds donated will be used to help further development on this project! :gift_heart:
 
 <p>
-  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4Y9DDQ8LDLMTL">
+  <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SCMXA34TCLGMG">
     <img src="https://github.com/crazy-max/brave-portable/blob/master/res/paypal.png" alt="Donate Paypal">
   </a>
   <a href="https://flattr.com/submit/auto?user_id=crazymax&url=https://github.com/crazy-max/brave-portable">
