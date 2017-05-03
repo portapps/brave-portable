@@ -115,7 +115,7 @@
         <equals arg1="@{version}" arg2="latest"/>
         <then>
           <var name="bravesetup.url" value="${bravesetup.latest.@{arch}}"/>
-          <var name="bravesetup.skip" value="true"/>
+          <var name="bravesetup.skip" value="false"/>
         </then>
         <else>
           <var file="${project.basedir}/setup.properties" prefix="setup"/>
