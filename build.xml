@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="brave-portable" basedir=".">
+
+  <dirname property="project.basedir" file="${ant.file.brave-portable}"/>
+  <property name="build.properties" value="${project.basedir}/build.properties"/>
+  <property file="${build.properties}"/>
+
+  <macrodef name="sevenzip">
+    <attribute name="src"/>
+    <attribute name="dest"/>
+    <attribute name="format" default="7z"/>
+    <sequential>
+      <if>
+        <equals arg1="@{format}" arg2="7z"/>
+        <then>
+          <echo message="Compressing @{src} to @{dest}..."/>
+          <exec executable="${7za}" failonerror="true">
+            <arg value="a"/>
+            <arg value="-t7z"/>
+            <arg value="@{dest}"/>
+            <arg value="@{src}"/>
+            <arg value="-m0=LZMA2"/>
+            <arg value="-mx9"/>
+            <arg value="-mmt2"/>
+          </exec>
+        </then>
+        <elseif>
+          <equals arg1="@{format}" arg2="zip"/>
+          <then>
+            <echo message="Compressing @{src} to @{dest}..."/>
+            <exec executable="${7za}" failonerror="true">
+              <arg value="a"/>
+              <arg value="-mm=Deflate"/>
+              <arg value="-mfb=258"/>
+              <arg value="-mpass=15"/>
+              <arg value="-r"/>
+              <arg value="@{dest}"/>
+              <arg value="@{src}"/>
+            </exec>
+          </then>
+        </elseif>
+        <else>
+          <fail message="Unknown format: @{format}"/>
+        </else>
+      </if>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="unsevenzip">
+    <attribute name="src"/>
+    <attribute name="dest"/>
+    <sequential>
+      <echo message="Extracting @{src} to @{dest}..."/>
+      <exec executable="${7za}" failonerror="true">
+        <arg value="x"/>
+        <arg value="@{src}"/>
+        <arg value="-o@{dest}"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="goget">
+    <attribute name="package"/>
+    <sequential>
+      <exec executable="go" failonerror="true">
+        <env key="GOPATH" value="${gopath}"/>
+        <arg value="get"/>
+        <arg value="-v"/>
+        <arg value="@{package}"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="gobuild">
+    <attribute name="outputfile"/>
+    <attribute name="workingdir"/>
+    <attribute name="arch"/>
+    <sequential>
+      <var name="goarch" value="386"/>
+      <if>
+        <equals arg1="@{arch}" arg2="x64"/>
+        <then>
+          <var name="goarch" value="amd64"/>
+        </then>
+      </if>
+      <exec executable="go" failonerror="true" dir="@{workingdir}">
+        <env key="GOARCH" value="${goarch}"/>
+        <env key="GOPATH" value="${gopath}"/>
+        <arg value="build"/>
+        <arg value="-v"/>
+        <arg value="-ldflags"/>
+        <arg value="-s -w -H=windowsgui"/>
+      </exec>
+      <copy file="@{workingdir}/go.exe"
+        tofile="@{outputfile}" overwrite="true"/>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="gogenerate">
+    <attribute name="workingdir"/>
+    <sequential>
+      <exec executable="go" failonerror="true" dir="@{workingdir}">
+        <env key="GOPATH" value="${gopath}"/>
+        <arg value="generate"/>
+        <arg value="-v"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="setBraveSetupUrl">
+    <attribute name="version"/>
+    <attribute name="arch"/>
+    <sequential>
+      <if>
+        <equals arg1="@{version}" arg2="latest"/>
+        <then>
+          <var name="bravesetup.url" value="${bravesetup.latest.@{arch}}"/>
+          <var name="bravesetup.skip" value="true"/>
+        </then>
+        <else>
+          <var file="${project.basedir}/setup.properties" prefix="setup"/>
+          <var name="bravesetup.url" value="${setup.@{version}.@{arch}}" />
+          <var name="bravesetup.skip" value="true"/>
+        </else>
+      </if>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="assertdir">
+    <attribute name="dir"/>
+    <sequential>
+      <fail message="Directory '@{dir}' does not exist">
+        <condition><not><available file="@{dir}" type="dir"/></not></condition>
+      </fail>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="assertfile">
+    <attribute name="file"/>
+    <sequential>
+      <fail message="File '@{file}' does not exist">
+        <condition><not><available file="@{file}" type="file"/></not></condition>
+      </fail>
+    </sequential>
+  </macrodef>
+
+  <!-- Default excludes -->
+  <defaultexcludes add="**/.github/**"/>
+  <defaultexcludes add="**/.idea/**"/>
+  <defaultexcludes add="**/.settings/**"/>
+  <defaultexcludes add="**/.buildpath"/>
+  <defaultexcludes add="**/.gitattributes"/>
+  <defaultexcludes add="**/.gitignore"/>
+  <defaultexcludes add="**/.gitkeep"/>
+  <defaultexcludes add="**/.project"/>
+  <defaultexcludes add="**/.project"/>
+  <defaultexcludes add="**/.styleci.yml"/>
+  <defaultexcludes add="**/.travis.yml"/>
+
+  <!-- Properties -->
+  <property environment="env"/>
+  <property name="src.path" value="${project.basedir}/${src.dir}"/>
+  <property name="static.path" value="${project.basedir}/${static.dir}"/>
+  <property name="bin.path" value="${project.basedir}/${bin.dir}"/>
+  <property name="res.path" value="${project.basedir}/${res.dir}"/>
+  <property name="go.path" value="${bin.path}/go"/>
+  <property name="build.path" value="${bin.path}/build"/>
+  <property name="setup.path" location="${bin.path}/setup"/>
+  <property name="release.path" value="${bin.path}/release"/>
+  <property name="lib.path" value="${bin.path}/lib"/>
+  <property name="tmp.path" value="${bin.path}/tmp"/>
+  <property name="extract.path" value="${tmp.path}/extract"/>
+  <property name="nupkg.path" value="${tmp.path}/nupkg"/>
+  <property name="7za" value="${lib.path}/7zipextra/7za.exe"/>
+  <property name="rcedit" value="${lib.path}/rcedit/rcedit.exe"/>
+  <property name="innoextract" location="${lib.path}/innoextract/innoextract.exe"/>
+  <property name="innosetup.path" location="${lib.path}/innosetup"/>
+  <property name="iscc" location="${innosetup.path}/app/ISCC.exe"/>
+
+  <!-- Build number -->
+  <condition property="app.release" value="${env.APPVEYOR_BUILD_NUMBER}"><isset property="env.APPVEYOR_BUILD_NUMBER"/></condition>
+  <condition property="app.release" value="${app.default.release}"><not><isset property="env.APPVEYOR_BUILD_NUMBER"/></not></condition>
+
+  <!-- Go path -->
+  <condition property="gopath" value="${env.GOPATH};${project.basedir}"><isset property="env.GOPATH"/></condition>
+  <condition property="gopath" value="${project.basedir}"><not><isset property="env.GOPATH"/></not></condition>
+
+  <target name="release" description="Release">
+    <antcall target="release.arch">
+      <param name="arch" value="ia32"/>
+      <param name="clear" value="true"/>
+    </antcall>
+    <antcall target="release.arch">
+      <param name="arch" value="x64"/>
+      <param name="clear" value="false"/>
+    </antcall>
+  </target>
+
+  <target name="release.arch" description="Release for a specific arch" depends="
+    init,
+    load.lib,
+    brave.download,
+    brave.process,
+    infos,
+    go.build,
+    build,
+    setup"
+  />
+
+  <target name="init">
+    <mkdir dir="${bin.path}"/>
+    <mkdir dir="${lib.path}"/>
+    <mkdir dir="${tmp.path}"/>
+    <delete dir="${build.path}"/>
+    <mkdir dir="${build.path}"/>
+    <delete dir="${setup.path}"/>
+    <mkdir dir="${setup.path}"/>
+    <delete dir="${extract.path}"/>
+    <mkdir dir="${extract.path}"/>
+    <delete dir="${nupkg.path}"/>
+    <mkdir dir="${nupkg.path}"/>
+    <delete dir="${go.path}"/>
+  </target>
+
+  <target name="load.lib" unless="is.lib.loaded" depends="
+      load.lib.antcontrib,
+      load.lib.sevenzip,
+      load.lib.rcedit,
+      load.lib.innosetup">
+    <if>
+      <istrue value="${clear}"/>
+      <then>
+        <delete dir="${release.path}"/>
+        <mkdir dir="${release.path}"/>
+      </then>
+    </if>
+    <var name="is.lib.loaded" value="true"/>
+  </target>
+
+  <target name="load.lib.antcontrib" unless="is.lib.loaded">
+    <echo message="Load ANT Contrib"/>
+    <mkdir dir="${lib.path}/ant-contrib"/>
+    <get dest="${lib.path}/ant-contrib/ant-contrib.jar" src="${antcontrib.url}" skipexisting="true"/>
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+      <classpath>
+        <fileset dir="${lib.path}/ant-contrib">
+          <include name="**/*.jar"/>
+        </fileset>
+      </classpath>
+    </taskdef>
+  </target>
+
+  <target name="load.lib.sevenzip" unless="is.lib.loaded">
+    <echo message="Load 7zip"/>
+    <get dest="${lib.path}/7zipextra.zip" src="${7zipextra.url}" skipexisting="true"/>
+    <if>
+      <not><available file="${lib.path}/7zipextra" type="dir"/></not>
+      <then>
+        <unzip src="${lib.path}/7zipextra.zip" dest="${lib.path}/7zipextra"/>
+      </then>
+    </if>
+  </target>
+
+  <target name="load.lib.rcedit" unless="is.lib.loaded">
+    <echo message="Load Rcedit"/>
+    <mkdir dir="${lib.path}/rcedit"/>
+    <get dest="${lib.path}/rcedit/rcedit.exe" src="${rcedit.url}" skipexisting="true"/>
+  </target>
+
+  <target name="load.lib.innoextract" unless="is.lib.loaded">
+    <echo message="Load innoextract"/>
+    <get dest="${lib.path}/innoextract.zip" src="${innoextract.url}" skipexisting="true"/>
+    <if>
+      <not><available file="${lib.path}/innoextract" type="dir"/></not>
+      <then>
+        <unzip src="${lib.path}/innoextract.zip" dest="${lib.path}/innoextract"/>
+      </then>
+    </if>
+  </target>
+
+  <target name="load.lib.innosetup" depends="load.lib.innoextract" unless="is.lib.loaded">
+    <echo message="Load InnoSetup"/>
+    <get dest="${lib.path}/innosetup.exe" src="${innosetup.url}" skipexisting="true"/>
+    <if>
+      <not><available file="${innosetup.path}/app" type="dir"/></not>
+      <then>
+        <exec executable="${innoextract}">
+          <arg value="-d"/>
+          <arg value="${innosetup.path}"/>
+          <arg value="${lib.path}/innosetup.exe"/>
+        </exec>
+      </then>
+    </if>
+    <fail message="File ${iscc} not found">
+      <condition>
+        <not>
+          <available file="${iscc}"/>
+        </not>
+      </condition>
+    </fail>
+  </target>
+
+  <target name="brave.download">
+    <echo message="Downloading Brave ${arch}..."/>
+    <setBraveSetupUrl version="${bravesetup.version}" arch="${arch}"/>
+    <echo message="* Version : ${bravesetup.version}"/>
+    <echo message="* URL     : ${bravesetup.url}"/>
+    <property name="bravesetup.path" value="${tmp.path}/BraveSetup-${arch}-${bravesetup.version}.exe"/>
+    <get dest="${bravesetup.path}" src="${bravesetup.url}" skipexisting="${bravesetup.skip}"/>
+  </target>
+
+  <target name="brave.process">
+    <echo message="Processing ${bravesetup.path}..."/>
+    <unsevenzip src="${bravesetup.path}" dest="${extract.path}"/>
+
+    <first id="first.nupkg">
+      <fileset dir="${extract.path}" includes="*.nupkg"/>
+    </first>
+    <condition property="brave.nupkg" value="${toString:first.nupkg}">
+      <available file="${toString:first.nupkg}" type="file"/>
+    </condition>
+    <fail unless="brave.nupkg" message="Nupkg file not found"/>
+    <echo message="Nupkg found : ${brave.nupkg}"/>
+
+    <unsevenzip src="${brave.nupkg}" dest="${nupkg.path}"/>
+    <condition property="brave.libpath" value="${nupkg.path}/lib/net45">
+      <available file="${nupkg.path}/lib/net45/${brave.executionstub}" type="file"/>
+    </condition>
+    <fail unless="brave.libpath" message="Brave execution stub not found"/>
+
+    <echo message="Metadata found:"/>
+    <xmlproperty file="${nupkg.path}/brave.nuspec" collapseAttributes="true"/>
+    <echo message="* ID      : ${package.metadata.id}"/>
+    <echo message="* Title   : ${package.metadata.title}"/>
+    <echo message="* Version : ${package.metadata.version}"/>
+    <property name="app.version" value="${package.metadata.version}"/>
+  </target>
+
+  <target name="infos">
+    <filterset id="filterset.app">
+      <filter token="APP_ID" value="${app.id}"/>
+      <filter token="APP_NAME" value="${app.name}"/>
+      <filter token="APP_DESC" value="${app.desc}"/>
+      <filter token="APP_VERSION" value="${app.version}"/>
+      <filter token="APP_RELEASE" value="${app.release}"/>
+      <filter token="APP_COPYRIGHT" value="${app.url}"/>
+    </filterset>
+    <echo message="APP_ID        : ${app.id}"/>
+    <echo message="APP_NAME      : ${app.name}"/>
+    <echo message="APP_DESC      : ${app.desc}"/>
+    <echo message="APP_VERSION   : ${app.version}"/>
+    <echo message="APP_RELEASE   : ${app.release}"/>
+    <echo message="APP_COPYRIGHT : ${app.url}"/>
+  </target>
+
+  <target name="go.build">
+    <copy todir="${go.path}">
+      <fileset file="${project.basedir}/brave-portable.go"/>
+      <fileset file="${project.basedir}/res/brave-portable.ico"/>
+    </copy>
+    <copy file="${project.basedir}/versioninfo.json" todir="${go.path}" overwrite="true">
+      <filterset refid="filterset.app"/>
+    </copy>
+    <goget package="github.com/josephspurrier/goversioninfo/cmd/goversioninfo"/>
+    <goget package="github.com/op/go-logging"/>
+    <gogenerate workingdir="${go.path}"/>
+    <gobuild outputfile="${go.path}/${app.id}.exe" workingdir="${go.path}" arch="${arch}"/>
+    <assertfile file="${go.path}/${app.id}.exe"/>
+  </target>
+
+  <target name="build">
+    <copy todir="${build.path}/app-${app.version}">
+      <fileset dir="${brave.libpath}"  excludes="
+        ${brave.executionstub}"
+      />
+    </copy>
+
+    <copy todir="${build.path}" file="${extract.path}/Update.exe"/>
+    <exec executable="${rcedit}" failonerror="true" dir="${build.path}">
+      <arg value="${build.path}/Update.exe"/>
+      <arg value="--set-icon"/>
+      <arg value="${static.path}/app.ico"/>
+    </exec>
+
+    <copy file="${brave.libpath}/${brave.executionstub}" tofile="${build.path}/brave.exe" overwrite="true"/>
+    <copy file="${project.basedir}/README.md" todir="${build.path}" overwrite="true"/>
+
+    <copy file="${go.path}/${app.id}.exe" todir="${build.path}" overwrite="true"/>
+    <copy todir="${build.path}" overwrite="true">
+      <fileset dir="${static.path}" defaultexcludes="yes"/>
+    </copy>
+  </target>
+
+  <target name="setup">
+    <echo message="Writing version.dat..."/>
+    <echo file="${tmp.path}/version.dat" append="false">${app.version}-${app.release}</echo>
+
+    <echo message="Creating release..."/>
+    <copy file="${go.path}/${app.id}.exe" tofile="${release.path}/${app.id}-${arch}.exe" overwrite="true"/>
+    <copy file="${tmp.path}/BraveSetup-${arch}-${bravesetup.version}.exe" tofile="${release.path}/BraveSetup-${arch}-${app.version}.exe" overwrite="true"/>
+    <sevenzip src="${build.path}/*" dest="${release.path}/${app.id}-${arch}-${app.version}-${app.release}.7z" format="7z"/>
+    <sevenzip src="${build.path}/*" dest="${release.path}/${app.id}-${arch}-${app.version}-${app.release}.zip" format="zip"/>
+
+    <echo message="Build setup"/>
+    <copy todir="${setup.path}/src">
+      <fileset dir="${build.path}"/>
+    </copy>
+    <copy todir="${setup.path}">
+      <fileset dir="${res.path}">
+        <include name="setup*"/>
+        <include name="brave-portable.ico"/>
+      </fileset>
+    </copy>
+    <copy file="${project.basedir}/LICENSE" tofile="${setup.path}/license.txt"/>
+    <copy file="${res.path}/setup.iss" tofile="${setup.path}/setup.iss" overwrite="true">
+      <filterset>
+        <filter token="APP_ID" value="${app.id}"/>
+        <filter token="APP_NAME" value="${app.name}"/>
+        <filter token="APP_VERSION" value="${app.version}-${app.release}"/>
+        <filter token="APP_URL" value="${app.url}"/>
+      </filterset>
+    </copy>
+    <exec executable="${iscc}" dir="${setup.path}" failonerror="true">
+      <arg value="/O${release.path}"/>
+      <arg value="/F${app.id}-${arch}-${app.version}-${app.release}-setup"/>
+      <arg value="setup.iss"/>
+    </exec>
+  </target>
+
+</project>
