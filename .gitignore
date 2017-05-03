@@ -1,0 +1,9 @@
+# Jetbrains
+/.idea
+/*.iml
+
+# App
+/.dev
+/bin
+/res/*.pspimage
+*.syso

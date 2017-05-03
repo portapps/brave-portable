@@ -1,0 +1,54 @@
+version: '{build}'
+
+platform:
+  - x64
+
+clone_folder: C:\gopath
+
+environment:
+  JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+  GOPATH: C:\gopath
+  GOROOT: C:\go\
+  GOVERSION: 1.8
+
+install:
+  - ps: choco install ant
+  - ps: $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+  - cmd: SET PATH=%GOPATH%\bin;%GOROOT%bin;%PATH%
+  - java -version
+  - ant -version
+  - go version
+  - go env
+
+configuration:
+  - Release
+
+build_script:
+  - ant release
+
+after_build:
+  - ps: |
+      $env:APP_VERSION = Get-Content C:\gopath\bin\tmp\version.dat -Raw
+      Write-Host "App version: $env:APP_VERSION"
+
+artifacts:
+  - path: 'bin\release\*'
+    name: release
+
+deploy:
+  tag: $(APP_VERSION)
+  release: $(APP_VERSION)
+  description: 'New release: $(APP_VERSION)'
+  provider: GitHub
+  auth_token:
+    secure: BGz5Z+cKh7a/UOFxIfBfZYho8Ghf3bO3LvaX70mdgiG1UDJhtW3FUGDjBrwyZglf
+  artifact: release
+  draft: true
+  prerelease: false
+  on:
+    branch: master
+
+notifications:
+  - provider: Slack
+    incoming_webhook:
+      secure: 6wcIQdnN6haB2OhAPJVhAoMpU1lLRM7tHmVUCfv2RZ/3gZSBCm7wCBde4Bx7zNyv3Qw6//VrX97ZD3ejdoyxfmFaXBomoclkVKJRcvCyn3s=
