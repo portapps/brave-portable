@@ -4,6 +4,7 @@
   <a href="https://github.com/crazy-max/brave-portable/releases/latest"><img src="https://img.shields.io/github/release/crazy-max/brave-portable.svg?style=flat-square" alt="GitHub release"></a>
   <a href="https://github.com/crazy-max/brave-portable/releases/latest"><img src="https://img.shields.io/github/downloads/crazy-max/brave-portable/total.svg?style=flat-square" alt="Total downloads"></a>
   <a href="https://ci.appveyor.com/project/crazy-max/brave-portable"><img src="https://img.shields.io/appveyor/ci/crazy-max/brave-portable.svg?style=flat-square" alt="AppVeyor"></a>
+  <a href="https://goreportcard.com/report/github.com/crazy-max/brave-portable"><img src="https://goreportcard.com/badge/github.com/crazy-max/brave-portable?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/crazy-max/brave-portable"><img src="https://img.shields.io/codacy/grade/a416cd778ef743de91623aca7a622a8e.svg?style=flat-square" alt="Code Quality"></a>
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SCMXA34TCLGMG"><img src="https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square" alt="Donate Paypal"></a>
   <a href="https://flattr.com/submit/auto?user_id=crazymax&url=https://github.com/crazy-max/brave-portable"><img src="https://img.shields.io/badge/flattr-this-green.svg?style=flat-square" alt="Flattr this!"></a>
@@ -22,6 +23,7 @@ There are four different kinds of artifacts :
 * `brave-portable-{ia32,x64}-x.x.x-x.{7z,zip}` : Full portable release of Brave as an archive.
 * `brave-portable-{ia32,x64}.exe` : Only the portable binary (must be renamed `brave-portable.exe`)
 * `BraveSetup-{ia32,x64}-x.x.x.exe` : The original setup from the [official website](https://brave.com/downloads.html).
+* `brave-x.x.x-full.nupkg` : The original NUPKG file extracted from the original setup.
 
 For a **fresh installation**, install `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` where you want then run `brave-portable.exe`.
 
@@ -48,5 +50,5 @@ Any funds donated will be used to help further development on this project! :gif
 
 ## License
 
-LGPL. See `LICENSE` for more details.<br />
+MIT. See `LICENSE` for more details.<br />
 USB icon credit to [Juliia Osadcha](https://www.iconfinder.com/Juliia_Os).

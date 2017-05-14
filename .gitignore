@@ -1,4 +1,4 @@
-# Jetbrains
+# Intellij
 /.idea
 /*.iml
 
@@ -6,4 +6,7 @@
 /.dev
 /bin
 /res/*.pspimage
-*.syso
+/vendor
+/*.syso
+/*.exe
+/versioninfo.json

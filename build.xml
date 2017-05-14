@@ -59,11 +59,22 @@
     </sequential>
   </macrodef>
 
+  <macrodef name="glide">
+    <attribute name="workingdir"/>
+    <sequential>
+      <goget package="github.com/Masterminds/glide"/>
+      <exec executable="glide" failonerror="true" dir="@{workingdir}">
+        <arg value="up"/>
+        <arg value="-v"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
   <macrodef name="goget">
     <attribute name="package"/>
     <sequential>
+      <echo message="go get @{package}..."/>
       <exec executable="go" failonerror="true">
-        <env key="GOPATH" value="${gopath}"/>
         <arg value="get"/>
         <arg value="-v"/>
         <arg value="@{package}"/>
@@ -76,23 +87,18 @@
     <attribute name="workingdir"/>
     <attribute name="arch"/>
     <sequential>
-      <var name="goarch" value="386"/>
-      <if>
-        <equals arg1="@{arch}" arg2="x64"/>
-        <then>
-          <var name="goarch" value="amd64"/>
-        </then>
-      </if>
+      <var name="goarch" unset="true"/>
+      <condition property="goarch" value="amd64"><equals arg1="@{arch}" arg2="x64"/></condition>
+      <condition property="goarch" value="386"><not><equals arg1="@{arch}" arg2="x64"/></not></condition>
       <exec executable="go" failonerror="true" dir="@{workingdir}">
         <env key="GOARCH" value="${goarch}"/>
-        <env key="GOPATH" value="${gopath}"/>
         <arg value="build"/>
+        <arg value="-o"/>
+        <arg value="@{outputfile}"/>
         <arg value="-v"/>
         <arg value="-ldflags"/>
         <arg value="-s -w -H=windowsgui"/>
       </exec>
-      <copy file="@{workingdir}/go.exe"
-        tofile="@{outputfile}" overwrite="true"/>
     </sequential>
   </macrodef>
 
@@ -100,14 +106,13 @@
     <attribute name="workingdir"/>
     <sequential>
       <exec executable="go" failonerror="true" dir="@{workingdir}">
-        <env key="GOPATH" value="${gopath}"/>
         <arg value="generate"/>
         <arg value="-v"/>
       </exec>
     </sequential>
   </macrodef>
 
-  <macrodef name="setBraveSetupUrl">
+  <macrodef name="setSetupUrl">
     <attribute name="version"/>
     <attribute name="arch"/>
     <sequential>
@@ -144,26 +149,10 @@
     </sequential>
   </macrodef>
 
-  <!-- Default excludes -->
-  <defaultexcludes add="**/.github/**"/>
-  <defaultexcludes add="**/.idea/**"/>
-  <defaultexcludes add="**/.settings/**"/>
-  <defaultexcludes add="**/.buildpath"/>
-  <defaultexcludes add="**/.gitattributes"/>
-  <defaultexcludes add="**/.gitignore"/>
-  <defaultexcludes add="**/.gitkeep"/>
-  <defaultexcludes add="**/.project"/>
-  <defaultexcludes add="**/.project"/>
-  <defaultexcludes add="**/.styleci.yml"/>
-  <defaultexcludes add="**/.travis.yml"/>
-
   <!-- Properties -->
   <property environment="env"/>
-  <property name="src.path" value="${project.basedir}/${src.dir}"/>
-  <property name="static.path" value="${project.basedir}/${static.dir}"/>
   <property name="bin.path" value="${project.basedir}/${bin.dir}"/>
   <property name="res.path" value="${project.basedir}/${res.dir}"/>
-  <property name="go.path" value="${bin.path}/go"/>
   <property name="build.path" value="${bin.path}/build"/>
   <property name="setup.path" location="${bin.path}/setup"/>
   <property name="release.path" value="${bin.path}/release"/>
@@ -180,10 +169,6 @@
   <!-- Build number -->
   <condition property="app.release" value="${env.APPVEYOR_BUILD_NUMBER}"><isset property="env.APPVEYOR_BUILD_NUMBER"/></condition>
   <condition property="app.release" value="${app.default.release}"><not><isset property="env.APPVEYOR_BUILD_NUMBER"/></not></condition>
-
-  <!-- Go path -->
-  <condition property="gopath" value="${env.GOPATH};${project.basedir}"><isset property="env.GOPATH"/></condition>
-  <condition property="gopath" value="${project.basedir}"><not><isset property="env.GOPATH"/></not></condition>
 
   <target name="release" description="Release">
     <antcall target="release.arch">
@@ -219,7 +204,6 @@
     <mkdir dir="${extract.path}"/>
     <delete dir="${nupkg.path}"/>
     <mkdir dir="${nupkg.path}"/>
-    <delete dir="${go.path}"/>
   </target>
 
   <target name="load.lib" unless="is.lib.loaded" depends="
@@ -302,7 +286,7 @@
 
   <target name="brave.download">
     <echo message="Downloading Brave ${arch}..."/>
-    <setBraveSetupUrl version="${bravesetup.version}" arch="${arch}"/>
+    <setSetupUrl version="${bravesetup.version}" arch="${arch}"/>
     <echo message="* Version : ${bravesetup.version}"/>
     <echo message="* URL     : ${bravesetup.url}"/>
     <property name="bravesetup.path" value="${tmp.path}/BraveSetup-${arch}-${bravesetup.version}.exe"/>
@@ -354,41 +338,33 @@
   </target>
 
   <target name="go.build">
-    <copy todir="${go.path}">
-      <fileset file="${project.basedir}/brave-portable.go"/>
-      <fileset file="${project.basedir}/res/brave-portable.ico"/>
-    </copy>
-    <copy file="${project.basedir}/versioninfo.json" todir="${go.path}" overwrite="true">
+    <copy file="${res.path}/versioninfo.json" todir="${project.basedir}" overwrite="true">
       <filterset refid="filterset.app"/>
     </copy>
     <goget package="github.com/josephspurrier/goversioninfo/cmd/goversioninfo"/>
-    <goget package="github.com/op/go-logging"/>
-    <gogenerate workingdir="${go.path}"/>
-    <gobuild outputfile="${go.path}/${app.id}.exe" workingdir="${go.path}" arch="${arch}"/>
-    <assertfile file="${go.path}/${app.id}.exe"/>
+    <glide workingdir="${project.basedir}"/>
+    <gogenerate workingdir="${project.basedir}"/>
+    <gobuild outputfile="${project.basedir}/${app.id}.exe" workingdir="${project.basedir}" arch="${arch}"/>
+    <assertfile file="${project.basedir}/${app.id}.exe"/>
   </target>
 
   <target name="build">
     <copy todir="${build.path}/app-${app.version}">
-      <fileset dir="${brave.libpath}"  excludes="
-        ${brave.executionstub}"
-      />
+      <fileset dir="${brave.libpath}"  excludes="${brave.executionstub}"/>
     </copy>
 
     <copy todir="${build.path}" file="${extract.path}/Update.exe"/>
     <exec executable="${rcedit}" failonerror="true" dir="${build.path}">
       <arg value="${build.path}/Update.exe"/>
       <arg value="--set-icon"/>
-      <arg value="${static.path}/app.ico"/>
+      <arg value="${res.path}/brave.ico"/>
     </exec>
 
     <copy file="${brave.libpath}/${brave.executionstub}" tofile="${build.path}/brave.exe" overwrite="true"/>
     <copy file="${project.basedir}/README.md" todir="${build.path}" overwrite="true"/>
 
-    <copy file="${go.path}/${app.id}.exe" todir="${build.path}" overwrite="true"/>
-    <copy todir="${build.path}" overwrite="true">
-      <fileset dir="${static.path}" defaultexcludes="yes"/>
-    </copy>
+    <copy file="${project.basedir}/${app.id}.exe" todir="${build.path}" overwrite="true"/>
+    <copy file="${res.path}/brave.ico" tofile="${build.path}/app.ico" overwrite="true"/>
   </target>
 
   <target name="setup">
@@ -396,8 +372,9 @@
     <echo file="${tmp.path}/version.dat" append="false">${app.version}-${app.release}</echo>
 
     <echo message="Creating release..."/>
-    <copy file="${go.path}/${app.id}.exe" tofile="${release.path}/${app.id}-${arch}.exe" overwrite="true"/>
+    <copy file="${project.basedir}/${app.id}.exe" tofile="${release.path}/${app.id}-${arch}.exe" overwrite="true"/>
     <copy file="${tmp.path}/BraveSetup-${arch}-${bravesetup.version}.exe" tofile="${release.path}/BraveSetup-${arch}-${app.version}.exe" overwrite="true"/>
+    <copy file="${brave.nupkg}" tofile="${release.path}/brave-${arch}-${app.version}-full.nupkg" overwrite="true"/>
     <sevenzip src="${build.path}/*" dest="${release.path}/${app.id}-${arch}-${app.version}-${app.release}.7z" format="7z"/>
     <sevenzip src="${build.path}/*" dest="${release.path}/${app.id}-${arch}-${app.version}-${app.release}.zip" format="zip"/>
 
@@ -408,6 +385,8 @@
     <copy todir="${setup.path}">
       <fileset dir="${res.path}">
         <include name="setup*"/>
+      </fileset>
+      <fileset dir="${project.basedir}">
         <include name="brave-portable.ico"/>
       </fileset>
     </copy>
