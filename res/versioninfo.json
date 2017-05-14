@@ -11,15 +11,15 @@
 	{
 		"Comments": "",
 		"CompanyName": "",
-		"FileDescription": "Make Brave portable on Windows",
-		"FileVersion": "0.15.2.0",
+		"FileDescription": "@APP_DESC@",
+		"FileVersion": "@APP_VERSION@.@APP_RELEASE@",
 		"InternalName": "",
-		"LegalCopyright": "https://github.com/crazy-max/brave-portable",
+		"LegalCopyright": "@APP_COPYRIGHT@",
 		"LegalTrademarks": "",
-		"OriginalFilename": "brave-portable.exe",
+		"OriginalFilename": "@APP_ID@.exe",
 		"PrivateBuild": "",
-		"ProductName": "Brave Portable",
-		"ProductVersion": "0.15.2.0",
+		"ProductName": "@APP_NAME@",
+		"ProductVersion": "@APP_VERSION@.@APP_RELEASE@",
 		"SpecialBuild": ""
 	},
 	"VarFileInfo":
