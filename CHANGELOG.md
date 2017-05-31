@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.15.310-3 (2017/05/31)
+
+* New release of Brave : 0.15.310
+
 ## 0.15.2-2 (2017/05/14)
 
 * New release of Brave : 0.15.2
