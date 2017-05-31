@@ -17,7 +17,7 @@ Tested on Windows 7, Windows 8.1 and Windows 10.
 
 ## Installation
 
-There are four different kinds of artifacts :
+There are different kinds of artifacts :
 
 * `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` : Full portable release of Brave as a setup. **Recommended way**!
 * `brave-portable-{ia32,x64}-x.x.x-x.{7z,zip}` : Full portable release of Brave as an archive.
