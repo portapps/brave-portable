@@ -14,7 +14,7 @@ environment:
 install:
   - ps: choco install ant
   - ps: $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-  - cmd: SET PATH=%GOPATH%\bin;%GOROOT%bin;%PATH%
+  - cmd: SET PATH=%GOPATH%\bin;%GOPATH%\bin\windows_386;%GOROOT%bin;%PATH%
   - java -version
   - ant -version
   - go version
