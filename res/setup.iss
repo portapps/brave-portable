@@ -20,7 +20,7 @@ WizardSmallImageFile=setup-mini.bmp
 DisableWelcomePage=no
 ShowLanguageDialog=yes
 LicenseFile=license.txt
-SetupIconFile=brave-portable.ico
+SetupIconFile=app-portable.ico
 
 Compression=lzma/max
 SolidCompression=yes
@@ -28,6 +28,7 @@ SolidCompression=yes
 DefaultDirName={sd}\{#appId}
 CreateAppDir=yes
 Uninstallable=no
+PrivilegesRequired=lowest
 
 VersionInfoCompany={#appPublisher}
 VersionInfoCopyright={#appPublisher} {#currentYear}
