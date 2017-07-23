@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/crazy-max/brave-portable" target="_blank"><img width="100" src="https://github.com/crazy-max/brave-portable/blob/master/res/brave-portable.png"></a></p>
+<p align="center"><a href="https://github.com/crazy-max/brave-portable" target="_blank"><img width="100" src="https://github.com/crazy-max/brave-portable/blob/master/res/logo.png"></a></p>
 
 <p align="center">
   <a href="https://github.com/crazy-max/brave-portable/releases/latest"><img src="https://img.shields.io/github/release/crazy-max/brave-portable.svg?style=flat-square" alt="GitHub release"></a>
@@ -20,10 +20,10 @@ Tested on Windows 7, Windows 8.1 and Windows 10.
 There are different kinds of artifacts :
 
 * `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` : Full portable release of Brave as a setup. **Recommended way**!
-* `brave-portable-{ia32,x64}-x.x.x-x.{7z,zip}` : Full portable release of Brave as an archive.
+* `brave-portable-{ia32,x64}-x.x.x-x.7z` : Full portable release of Brave as a 7z archive.
 * `brave-portable-{ia32,x64}.exe` : Only the portable binary (must be renamed `brave-portable.exe`)
 * `BraveSetup-{ia32,x64}-x.x.x.exe` : The original setup from the [official website](https://brave.com/downloads.html).
-* `brave-x.x.x-full.nupkg` : The original NUPKG file extracted from the original setup.
+* `brave-{ia32,x64}-x.x.x-full.nupkg` : The original NUPKG file extracted from the original setup.
 
 For a **fresh installation**, install `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` where you want then run `brave-portable.exe`.
 

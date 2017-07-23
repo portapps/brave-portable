@@ -1,4 +1,5 @@
-//go:generate goversioninfo -icon=brave-portable.ico
+//go:generate go get -v github.com/josephspurrier/goversioninfo/...
+//go:generate goversioninfo -icon=res/app-portable.ico
 package main
 
 import (
@@ -16,7 +17,10 @@ import (
 )
 
 const (
-	NAME = "brave-portable"
+	NAME            = "brave-portable"
+	APP_NAME        = "Brave"
+	APP_DATA_FOLDER = "brave"
+	APP_PROCESS     = "Brave.exe"
 )
 
 var (
@@ -63,10 +67,10 @@ func main() {
 	}
 
 	// Init vars
-	var braveExe = path.Join(appPath, "Brave.exe")
+	var appExe = path.Join(appPath, APP_PROCESS)
 	var dataPath = path.Join(currentPath, "data")
-	var symlinkPath = path.Clean(path.Join(os.Getenv("APPDATA"), "brave"))
-	log.Info("Brave executable:", braveExe)
+	var symlinkPath = path.Clean(path.Join(os.Getenv("APPDATA"), APP_DATA_FOLDER))
+	log.Info("App executable:", appExe)
 	log.Info("Data path:", dataPath)
 	log.Info("Symlink path:", symlinkPath)
 
@@ -121,9 +125,9 @@ func main() {
 	    log.Error(err)
 	  }*/
 
-	// Launch brave
-	log.Info("Launch Brave...")
-	cmd = exec.Command(braveExe)
+	// Launch
+	log.Infof("Launch %s...", APP_NAME)
+	cmd = exec.Command(appExe)
 	cmd.Dir = appPath
 
 	defer logfile.Close()
