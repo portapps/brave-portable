@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.17.19-6 (2017/07/23)
+
+* New release of Brave : 0.17.19
+* Admin privileges not required for Setup
+* Small refactoring
+
 ## 0.17.13-5 (2017/07/09)
 
 * New release of Brave : 0.17.13
