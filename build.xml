@@ -109,7 +109,7 @@
   <condition property="app.release" value="${env.APPVEYOR_BUILD_NUMBER}"><isset property="env.APPVEYOR_BUILD_NUMBER"/></condition>
   <condition property="app.release" value="${app.default.release}"><not><isset property="env.APPVEYOR_BUILD_NUMBER"/></not></condition>
 
-  <target name="setup" depends="init, glide, generate" description="Setup workspace"/>
+  <target name="setup" depends="init, glide" description="Setup workspace"/>
 
   <target name="release" depends="init" description="Release">
     <randomstring property="app.buildid"/>
@@ -240,7 +240,7 @@
   <target name="download">
     <echo message="Downloading ${atf.id}..."/>
     <property name="atf.setupdest" location="${tmp.path}\${atf.setupname}-${atf.arch}.exe"/>
-    <get dest="${atf.setupdest}" src="${atf.url}" skipexisting="true"/>
+    <get dest="${atf.setupdest}" src="${atf.url}" skipexisting="false"/>
   </target>
 
   <target name="extract">
