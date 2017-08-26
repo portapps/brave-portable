@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.18.23-8 (2017/08/26)
+
+* Heuristic detection (Issue #2)
+* Upgrade to Go 1.9
+* Add support guidelines
+* New release of Brave : 0.18.23
+
 ## 0.18.14-7 (2017/08/09)
 
 * New release of Brave : 0.18.14
