@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.18.23-9 (2017/09/05)
+
+* Override USERPROFILE env var instead of using symlink to APPDATA to store data
+* Do not migrate old data folder from APPDATA
+* Reduce dependencies and system calls to avoid heuristic detection
+
+> :warning: **UPGRADE NOTES**
+> * Move the content of `data\*` in `data\AppData\Roaming\brave\`
+> * Remove symlink `%APPDATA%\brave`
+
 ## 0.18.23-8 (2017/08/26)
 
 * Heuristic detection (Issue #2)

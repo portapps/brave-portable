@@ -27,8 +27,7 @@ There are different kinds of artifacts :
 
 For a **fresh installation**, install `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` where you want then run `brave-portable.exe`.
 
-If **you have already installed Brave from the original setup**, do the same thing as a fresh installation and run `brave-portable.exe` a first time.<br />
-The data located in `%APPDATA%\brave` will be moved in the `data` folder.<br />
+If **you have already installed Brave from the original setup**, do the same thing as a fresh installation and move the data located in `%APPDATA%\brave` to `data\AppData\Roaming\brave` then run `brave-portable.exe`.<br />
 Then you can [remove](https://support.microsoft.com/en-us/instantanswers/ce7ba88b-4e95-4354-b807-35732db36c4d/repair-or-remove-programs) Brave from your computer.
 
 **For an upgrade**, simply download and install the [latest setup](https://github.com/crazy-max/brave-portable/releases/latest).
