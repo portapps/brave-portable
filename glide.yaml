@@ -4,5 +4,4 @@ license: MIT
 owners:
 - name: crazy-max
 import:
-- package: github.com/op/go-logging
-  version: 970db520ece77730c7e4724c61121037378659d9
+- package: github.com/google/logger
