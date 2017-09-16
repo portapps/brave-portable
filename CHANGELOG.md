@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.18.36-10 (2017/09/16)
+
+* New release of Brave : 0.18.36
+* Change logger
+
 ## 0.18.23-9 (2017/09/05)
 
 * Override USERPROFILE env var instead of using symlink to APPDATA to store data
