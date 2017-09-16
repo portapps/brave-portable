@@ -1,6 +1,12 @@
-hash: 0ca82682581fe51ba36d065c543eb3c3079a233ae90dac2b895e2c29d6aff691
-updated: 2017-05-14T09:24:35.7031515+02:00
+hash: f8207f922cf727ccb77238685ac0f2f7fc9672cc79c5d6c07ddeccf450edf6db
+updated: 2017-09-16T14:33:58.5218777+02:00
 imports:
-- name: github.com/op/go-logging
-  version: 970db520ece77730c7e4724c61121037378659d9
+- name: github.com/google/logger
+  version: 660ecf7532aaf162e3d3e435c4b63ed74b798a1f
+- name: golang.org/x/sys
+  version: e24f485414aeafb646f6fca458b0bf869c0880a1
+  subpackages:
+  - windows
+  - windows/registry
+  - windows/svc/eventlog
 testImports: []
