@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.19.48-11 (2017/10/15)
+
+* New release of Brave : 0.19.48
+
 ## 0.18.36-10 (2017/09/16)
 
 * New release of Brave : 0.18.36
