@@ -17,7 +17,7 @@
   <property name="extract.path" value="${tmp.path}\extract"/>
   <property name="nupkg.path" value="${tmp.path}\nupkg"/>
   <property name="7za" value="${lib.path}\7zipextra\7za.exe"/>
-  <property name="glide" value="${lib.path}\glide\windows-386\glide.exe"/>
+  <property name="dep" value="${lib.path}\dep.exe"/>
   <property name="rcedit" value="${lib.path}\rcedit\rcedit.exe"/>
   <property name="innoextract" location="${lib.path}\innoextract\innoextract.exe"/>
   <property name="innosetup.path" location="${lib.path}\innosetup"/>
@@ -109,7 +109,7 @@
   <condition property="app.release" value="${env.APPVEYOR_BUILD_NUMBER}"><isset property="env.APPVEYOR_BUILD_NUMBER"/></condition>
   <condition property="app.release" value="${app.default.release}"><not><isset property="env.APPVEYOR_BUILD_NUMBER"/></not></condition>
 
-  <target name="setup" depends="init, glide" description="Setup workspace"/>
+  <target name="setup" depends="init, dep" description="Setup workspace"/>
 
   <target name="release" depends="init" description="Release">
     <randomstring property="app.buildid"/>
@@ -154,7 +154,7 @@
   <target name="load.libs" unless="is.lib.loaded" depends="
       load.lib.antcontrib,
       load.lib.sevenzip,
-      load.lib.glide,
+      load.lib.dep,
       load.lib.rcedit,
       load.lib.innosetup">
     <var name="is.lib.loaded" value="true"/>
@@ -184,16 +184,10 @@
     </if>
   </target>
 
-  <target name="load.lib.glide" unless="is.lib.loaded">
-    <echo message="Load Glide"/>
-    <get dest="${lib.path}\glide.zip" src="${glide.url}" skipexisting="true"/>
-    <if>
-      <not><available file="${lib.path}\glide" type="dir"/></not>
-      <then>
-        <unzip src="${lib.path}\glide.zip" dest="${lib.path}\glide"/>
-      </then>
-    </if>
-    <assertfile file="${glide}"/>
+  <target name="load.lib.dep" unless="is.lib.loaded">
+    <echo message="Load Dep"/>
+    <get dest="${dep}" src="${dep.url}" skipexisting="true"/>
+    <assertfile file="${dep}"/>
   </target>
 
   <target name="load.lib.rcedit" unless="is.lib.loaded">
@@ -287,9 +281,9 @@
     <echo message="APP_COPYRIGHT : ${app.url}"/>
   </target>
 
-  <target name="glide" description="Install vendor">
-    <exec executable="${glide}" failonerror="true" dir="${project.basedir}">
-      <arg value="install"/>
+  <target name="dep" description="Install vendor">
+    <exec executable="${dep}" failonerror="true" dir="${project.basedir}">
+      <arg value="ensure"/>
       <arg value="-v"/>
     </exec>
   </target>
@@ -305,7 +299,7 @@
     </exec>
   </target>
 
-  <target name="build" depends="glide, generate">
+  <target name="build" depends="dep, generate">
     <exec executable="go" failonerror="true" dir="${project.basedir}">
       <env key="GOARCH" value="${goarch}"/>
       <arg value="build"/>

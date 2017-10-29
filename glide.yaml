@@ -1,7 +1,0 @@
-package: github.com/crazy-max/discord-portable
-homepage: https://github.com/crazy-max/discord-portable
-license: MIT
-owners:
-- name: crazy-max
-import:
-- package: github.com/google/logger
