@@ -1,10 +1,10 @@
 # Changelog
 
-## 0.19.88-71 (2017/11/11)
+## 0.19.88-13 (2017/11/11)
 
 * New release of Brave : 0.19.88
 
-## 0.19.48-70 (2017/10/29)
+## 0.19.48-12 (2017/10/29)
 
 * New release of Brave : 0.19.70
 * Switch to [Golang Dep](https://github.com/golang/dep) as dependency manager
