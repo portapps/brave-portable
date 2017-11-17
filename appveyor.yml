@@ -23,6 +23,9 @@ install:
 configuration:
   - Release
 
+before_build:
+  - go get -u -v github.com/portapps/portapps
+
 build_script:
   - ant release
 
