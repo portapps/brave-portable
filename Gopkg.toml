@@ -1,7 +1,7 @@
 [metadata]
-package = "github.com/crazy-max/brave-portable"
-homepage = "https://github.com/crazy-max/brave-portable"
+package = "github.com/portapps/brave-portable"
+homepage = "https://github.com/portapps/brave-portable"
 license = "MIT"
 
 [[constraint]]
-  name = "github.com/google/logger"
+  name = "github.com/portapps/portapps"

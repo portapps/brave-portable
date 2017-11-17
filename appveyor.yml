@@ -3,7 +3,7 @@ version: '{build}'
 platform:
   - x64
 
-clone_folder: C:\gopath\src\github.com\crazy-max\brave-portable
+clone_folder: C:\gopath\src\github.com\portapps\brave-portable
 
 environment:
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
@@ -28,7 +28,7 @@ build_script:
 
 after_build:
   - ps: |
-      $env:APP_VERSION = Get-Content C:\gopath\src\github.com\crazy-max\brave-portable\bin\tmp\version.dat -Raw
+      $env:APP_VERSION = Get-Content C:\gopath\src\github.com\portapps\brave-portable\bin\tmp\version.dat -Raw
       Write-Host "App version: $env:APP_VERSION"
 
 artifacts:

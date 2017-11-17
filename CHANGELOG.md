@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.19.95-14 (2017/11/17)
+
+* New release of Brave : 0.19.95
+* Move repository to [Portapps](https://github.com/portapps) org
+
 ## 0.19.88-13 (2017/11/11)
 
 * New release of Brave : 0.19.88
