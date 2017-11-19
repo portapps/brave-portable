@@ -11,17 +11,17 @@
   branch = "master"
   name = "github.com/portapps/portapps"
   packages = ["."]
-  revision = "5c2a43790766e4286051bd387505560eea117ed6"
+  revision = "5798dd6a946efede44879dc0f0ab77aeabec8099"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["windows","windows/registry","windows/svc/eventlog"]
-  revision = "bf42f188b9bc6f2cf5b8ee5a912ef1aedd0eba4c"
+  revision = "0ac51a24ef1c37380f98ba8b98f56e3bffd59850"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "fd115ab313d0911bfb37f831ac0eb98ab4bfd752dd2a60363268283d35a38864"
+  inputs-digest = "6c7a78b2bdad75f5fd627d49db4bec2c128c6f1807dc3beae37dce10cd8489a9"
   solver-name = "gps-cdcl"
   solver-version = 1

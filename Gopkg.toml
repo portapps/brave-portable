@@ -4,4 +4,5 @@ homepage = "https://github.com/portapps/brave-portable"
 license = "MIT"
 
 [[constraint]]
+  branch = "master"
   name = "github.com/portapps/portapps"

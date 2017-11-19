@@ -14,6 +14,6 @@
   <import file="${core.basedir}\.build\build-app.xml"/>
 
   <!-- Targets -->
-  <target name="release" depends="papps-app.release" description="Release"/>
+  <target name="release" depends="papps-app.release.app" description="Release"/>
 
 </project>
