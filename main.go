@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	App.Id = "brave-portable"
+	App.ID = "brave-portable"
 	App.Name = "Brave"
 	Init()
 }
@@ -19,6 +19,6 @@ func main() {
 	App.Args = nil
 	App.WorkingDir = App.MainPath
 
-	OverrideUserprofilePath(App.RootDataPath)
+	OverrideEnv("USERPROFILE", App.RootDataPath)
 	Launch()
 }
