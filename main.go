@@ -7,18 +7,23 @@ import (
 )
 
 func init() {
-	App.ID = "brave-portable"
-	App.Name = "Brave"
+	Papp.ID = "brave-portable"
+	Papp.Name = "Brave"
 	Init()
 }
 
 func main() {
-	App.MainPath = FindElectronMainFolder("app-")
-	App.DataPath = CreateFolder(PathJoin(App.RootDataPath, "AppData", "Roaming", "Brave"))
-	App.Process = RootPathJoin("Brave.exe")
-	App.Args = nil
-	App.WorkingDir = App.MainPath
+	Papp.AppPath = AppPathJoin("app")
+	Papp.DataPath = AppPathJoin("data")
 
-	OverrideEnv("USERPROFILE", App.RootDataPath)
+	electronBinPath := PathJoin(Papp.AppPath, FindElectronAppFolder("app-", Papp.AppPath))
+	roamingPath := CreateFolder(PathJoin(Papp.DataPath, "AppData", "Roaming", "Brave"))
+	Log.Infof("Roaming path: %s", roamingPath)
+
+	Papp.Process = PathJoin(Papp.AppPath, "Brave.exe")
+	Papp.Args = nil
+	Papp.WorkingDir = electronBinPath
+
+	OverrideEnv("USERPROFILE", Papp.DataPath)
 	Launch()
 }
