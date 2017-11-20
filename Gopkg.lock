@@ -11,7 +11,7 @@
   branch = "master"
   name = "github.com/portapps/portapps"
   packages = ["."]
-  revision = "ca205f8330c54d6506a73fa17ba717d9ed98f8f4"
+  revision = "43d65ce3116a9105f13ab3c5b2eb0a05bef556c2"
 
 [[projects]]
   branch = "master"
