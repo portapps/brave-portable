@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.19.95-15 (2017/11/21)
+
+* Move app to a subfolder
+* Reduce dependencies to avoid heuristic detection
+* Add UPX compression
+
+> :warning: **UPGRADE NOTES**
+> * Delete all files and folders in root folder except `data` folder.
+
 ## 0.19.95-14 (2017/11/17)
 
 * New release of Brave : 0.19.95
