@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.19.105-16 (2017/12/09)
+
+* New release of Brave : 0.19.105
+
 ## 0.19.95-15 (2017/11/21)
 
 * Move app to a subfolder

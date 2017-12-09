@@ -52,6 +52,7 @@ deploy:
     branch: master
 
 notifications:
-  - provider: Slack
-    incoming_webhook:
-      secure: 6wcIQdnN6haB2OhAPJVhAoMpU1lLRM7tHmVUCfv2RZ/3gZSBCm7wCBde4Bx7zNyv3Qw6//VrX97ZD3ejdoyxfmFaXBomoclkVKJRcvCyn3s=
+  - provider: Webhook
+    url:
+      secure: Vf+59lgCDVyte9kmHKwYXPR7uc6THo9IH6mQwiPAWOCQHUoLCQrGFupj30nk4MUggyWss3ydobo/z1sQ6iYabwAkkwI6H9XNmjgGgTVlCJoBISHN6yTwxLgkYMi40qT4Mevr9XVgd6EmJqOi257YjQ==
+    method: post
