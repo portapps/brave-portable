@@ -25,12 +25,21 @@ There are different kinds of artifacts :
 * `BraveSetup-{ia32,x64}-x.x.x.exe` : The original setup from the [official website](https://brave.com/downloads.html).
 * `brave-{ia32,x64}-x.x.x-full.nupkg` : The original NUPKG file extracted from the original setup.
 
-For a **fresh installation**, install `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` where you want then run `brave-portable.exe`.
+### Fresh installation
 
-If **you have already installed Brave from the original setup**, do the same thing as a fresh installation and move the data located in `%APPDATA%\brave` to `data\AppData\Roaming\brave` then run `brave-portable.exe`.<br />
-Then you can [remove](https://support.microsoft.com/en-us/instantanswers/ce7ba88b-4e95-4354-b807-35732db36c4d/repair-or-remove-programs) Brave from your computer.
+Install `brave-portable-{ia32,x64}-x.x.x-x-setup.exe` where you want then run `brave-portable.exe`.
 
-**For an upgrade**, simply download and install the [latest setup](https://github.com/portapps/brave-portable/releases/latest).
+### App already installed
+
+If you have already installed Brave from the original setup, do the same thing as a fresh installation and :
+
+* Move data located in `%APPDATA%\brave\*` to `data` folder.
+
+Run `brave-portable.exe` and then you can [remove](https://support.microsoft.com/en-us/instantanswers/ce7ba88b-4e95-4354-b807-35732db36c4d/repair-or-remove-programs) Brave from your computer.
+
+### Upgrade
+
+For an upgrade, simply download and install the [latest setup](https://github.com/portapps/brave-portable/releases/latest).
 
 ## How can i help ?
 

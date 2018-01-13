@@ -17,13 +17,10 @@ func main() {
 	Papp.DataPath = AppPathJoin("data")
 
 	electronBinPath := PathJoin(Papp.AppPath, FindElectronAppFolder("app-", Papp.AppPath))
-	roamingPath := CreateFolder(PathJoin(Papp.DataPath, "AppData", "Roaming", "Brave"))
-	Log.Infof("Roaming path: %s", roamingPath)
 
 	Papp.Process = PathJoin(Papp.AppPath, "Brave.exe")
 	Papp.Args = nil
 	Papp.WorkingDir = electronBinPath
 
-	OverrideEnv("USERPROFILE", Papp.DataPath)
 	Launch()
 }

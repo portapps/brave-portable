@@ -13,10 +13,13 @@ environment:
 
 install:
   - ps: choco install ant
+  - ps: Install-Product node 8
   - ps: $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
   - cmd: SET PATH=%GOPATH%\bin;%GOPATH%\bin\windows_386;%GOROOT%bin;%PATH%
   - java -version
   - ant -version
+  - node --version
+  - npm --version
   - go version
   - go env
 
