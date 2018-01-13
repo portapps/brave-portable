@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.19.134-20 (2017/01/13)
+
+* New release of Brave : 0.19.134
+* Rebuild electron.asar to push data directly in `data` subfolder
+* No need to override USERPROFILE environment variable anymore
+
+> :warning: **UPGRADE NOTES**
+> * Move everything in `data\AppData\Roaming\brave\*` to `data` folder and remove folder `data\AppData`.
+
 ## 0.19.131-19 (2017/01/12)
 
 * New release of Brave : 0.19.131
