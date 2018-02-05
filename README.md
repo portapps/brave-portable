@@ -6,7 +6,6 @@
   <a href="https://ci.appveyor.com/project/crazy-max/brave-portable"><img src="https://img.shields.io/appveyor/ci/crazy-max/brave-portable.svg?style=flat-square" alt="AppVeyor"></a>
   <a href="https://goreportcard.com/report/github.com/portapps/brave-portable"><img src="https://goreportcard.com/badge/github.com/portapps/brave-portable?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/crazy-max/brave-portable"><img src="https://img.shields.io/codacy/grade/a416cd778ef743de91623aca7a622a8e.svg?style=flat-square" alt="Code Quality"></a>
-  <a href="https://saythanks.io/to/crazymax"><img src="https://img.shields.io/badge/thank-crazymax-426aa5.svg?style=flat-square" alt="Say Thanks"></a>
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQD7AQGPDEPSG"><img src="https://img.shields.io/badge/donate-paypal-7057ff.svg?style=flat-square" alt="Donate Paypal"></a>
 </p>
 
