@@ -5,19 +5,19 @@
   branch = "master"
   name = "github.com/google/logger"
   packages = ["."]
-  revision = "8fe7758b4c5f42c3df32b77c5c2bc3ccd65ea257"
+  revision = "09d434b1e522d216684d09421cd0b0213c96c787"
 
 [[projects]]
-  branch = "master"
   name = "github.com/portapps/portapps"
   packages = ["."]
-  revision = "43d65ce3116a9105f13ab3c5b2eb0a05bef556c2"
+  revision = "98b6b58190e7fc96c1f280b669d28e1ebaddd89a"
+  version = "1.7"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["windows","windows/registry","windows/svc/eventlog"]
-  revision = "0ac51a24ef1c37380f98ba8b98f56e3bffd59850"
+  revision = "37707fdb30a5b38865cfb95e5aab41707daec7fd"
 
 [solve-meta]
   analyzer-name = "dep"

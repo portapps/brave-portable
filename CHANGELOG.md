@@ -1,12 +1,17 @@
 # Changelog
 
+## 0.20.30-22 (2017/02/08)
+
+* Upgrade to Brave 0.20.30
+* Ability to pass custom args to the portable process
+
 ## 0.19.139-21 (2017/01/21)
 
-* New release of Brave : 0.19.139
+* Upgrade to Brave 0.19.139
 
 ## 0.19.134-20 (2017/01/13)
 
-* New release of Brave : 0.19.134
+* Upgrade to Brave 0.19.134
 * Rebuild electron.asar to push data directly in `data` subfolder
 * No need to override USERPROFILE environment variable anymore
 
@@ -15,19 +20,19 @@
 
 ## 0.19.131-19 (2017/01/12)
 
-* New release of Brave : 0.19.131
+* Upgrade to Brave 0.19.131
 
 ## 0.19.122-18 (2017/12/27)
 
-* New release of Brave : 0.19.122
+* Upgrade to Brave 0.19.122
 
 ## 0.19.116-17 (2017/12/14)
 
-* New release of Brave : 0.19.116
+* Upgrade to Brave 0.19.116
 
 ## 0.19.105-16 (2017/12/09)
 
-* New release of Brave : 0.19.105
+* Upgrade to Brave 0.19.105
 
 ## 0.19.95-15 (2017/11/21)
 
@@ -40,26 +45,26 @@
 
 ## 0.19.95-14 (2017/11/17)
 
-* New release of Brave : 0.19.95
+* Upgrade to Brave 0.19.95
 * Move repository to [Portapps](https://github.com/portapps) org
 
 ## 0.19.88-13 (2017/11/11)
 
-* New release of Brave : 0.19.88
+* Upgrade to Brave 0.19.88
 
 ## 0.19.48-12 (2017/10/29)
 
-* New release of Brave : 0.19.70
+* Upgrade to Brave 0.19.70
 * Switch to [Golang Dep](https://github.com/golang/dep) as dependency manager
 * Upgrade to Go 1.9.1
 
 ## 0.19.48-11 (2017/10/15)
 
-* New release of Brave : 0.19.48
+* Upgrade to Brave 0.19.48
 
 ## 0.18.36-10 (2017/09/16)
 
-* New release of Brave : 0.18.36
+* Upgrade to Brave 0.18.36
 * Change logger
 
 ## 0.18.23-9 (2017/09/05)
@@ -77,33 +82,33 @@
 * Heuristic detection (Issue #2)
 * Upgrade to Go 1.9
 * Add support guidelines
-* New release of Brave : 0.18.23
+* Upgrade to Brave 0.18.23
 
 ## 0.18.14-7 (2017/08/09)
 
-* New release of Brave : 0.18.14
+* Upgrade to Brave 0.18.14
 
 ## 0.17.19-6 (2017/07/23)
 
-* New release of Brave : 0.17.19
+* Upgrade to Brave 0.17.19
 * Admin privileges not required for Setup
 * Small refactoring
 
 ## 0.17.13-5 (2017/07/09)
 
-* New release of Brave : 0.17.13
+* Upgrade to Brave 0.17.13
 
 ## 0.16.9-4 (2017/05/31)
 
-* New release of Brave : 0.16.9
+* Upgrade to Brave 0.16.9
 
 ## 0.15.310-3 (2017/05/31)
 
-* New release of Brave : 0.15.310
+* Upgrade to Brave 0.15.310
 
 ## 0.15.2-2 (2017/05/14)
 
-* New release of Brave : 0.15.2
+* Upgrade to Brave 0.15.2
 * Provide the nupkg file in the release
 * Add Go report card
 * Move log file to the root folder
