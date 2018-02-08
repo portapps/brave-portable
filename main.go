@@ -3,6 +3,8 @@
 package main
 
 import (
+	"os"
+
 	. "github.com/portapps/portapps"
 )
 
@@ -22,5 +24,5 @@ func main() {
 	Papp.Args = nil
 	Papp.WorkingDir = electronBinPath
 
-	Launch()
+	Launch(os.Args[1:])
 }
