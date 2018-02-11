@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.20.30-23 (2017/02/11)
+
+* Move ia32/x64 to win32/win64 for arch def
+* Remove nupkg file
+
 ## 0.20.30-22 (2017/02/08)
 
 * Upgrade to Brave 0.20.30

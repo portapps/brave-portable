@@ -23,7 +23,7 @@ First search for [existing issues](https://github.com/portapps/brave-portable/is
 
 ### Configuration
 
-**App release / arch (ex. 0.0.298-14 x64)** :
+**App release / arch (ex. 0.0.298-14 win64)** :
 
 **Operating system (ex. Windows 10 Pro 64 bits)** :
 
