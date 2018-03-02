@@ -1,20 +1,24 @@
 # Changelog
 
-## 0.20.30-23 (2017/02/11)
+## 0.20.30-23 (2018/03/02)
+
+* Upgrade to Brave 0.21.18
+
+## 0.20.30-23 (2018/02/11)
 
 * Move ia32/x64 to win32/win64 for arch def
 * Remove nupkg file
 
-## 0.20.30-22 (2017/02/08)
+## 0.20.30-22 (2018/02/08)
 
 * Upgrade to Brave 0.20.30
 * Ability to pass custom args to the portable process
 
-## 0.19.139-21 (2017/01/21)
+## 0.19.139-21 (2018/01/21)
 
 * Upgrade to Brave 0.19.139
 
-## 0.19.134-20 (2017/01/13)
+## 0.19.134-20 (2018/01/13)
 
 * Upgrade to Brave 0.19.134
 * Rebuild electron.asar to push data directly in `data` subfolder
@@ -23,7 +27,7 @@
 > :warning: **UPGRADE NOTES**
 > * Move everything in `data\AppData\Roaming\brave\*` to `data` folder and remove folder `data\AppData`.
 
-## 0.19.131-19 (2017/01/12)
+## 0.19.131-19 (2018/01/12)
 
 * Upgrade to Brave 0.19.131
 
