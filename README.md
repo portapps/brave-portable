@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://github.com/portapps/brave-portable/releases/latest"><img src="https://img.shields.io/github/release/portapps/brave-portable.svg?style=flat-square" alt="GitHub release"></a>
   <a href="https://github.com/portapps/brave-portable/releases/latest"><img src="https://img.shields.io/github/downloads/portapps/brave-portable/total.svg?style=flat-square" alt="Total downloads"></a>
-  <a href="https://ci.appveyor.com/project/crazy-max/brave-portable"><img src="https://img.shields.io/appveyor/ci/crazy-max/brave-portable.svg?style=flat-square" alt="AppVeyor"></a>
+  <a href="https://ci.appveyor.com/project/portapps/brave-portable"><img src="https://img.shields.io/appveyor/ci/portapps/brave-portable.svg?style=flat-square" alt="AppVeyor"></a>
   <a href="https://goreportcard.com/report/github.com/portapps/brave-portable"><img src="https://goreportcard.com/badge/github.com/portapps/brave-portable?style=flat-square" alt="Go Report"></a>
   <a href="https://www.codacy.com/app/portapps/brave-portable"><img src="https://img.shields.io/codacy/grade/a416cd778ef743de91623aca7a622a8e.svg?style=flat-square" alt="Code Quality"></a>
   <a href="https://beerpay.io/portapps/portapps"><img src="https://img.shields.io/beerpay/portapps/portapps.svg?style=flat-square" alt="Beerpay"></a>
