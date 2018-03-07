@@ -48,7 +48,7 @@ deploy:
   description: 'New release: $(APP_VERSION)'
   provider: GitHub
   auth_token:
-    secure: BGz5Z+cKh7a/UOFxIfBfZYho8Ghf3bO3LvaX70mdgiG1UDJhtW3FUGDjBrwyZglf
+    secure: jFbo7oVnD9HZL5LL+nE0IC8x6xHlqvkeVDeMj/WS+Rk9GanjBKlnlvTjeHsNlo+/
   artifact: release
   draft: true
   prerelease: false
@@ -58,5 +58,5 @@ deploy:
 notifications:
   - provider: Webhook
     url:
-      secure: Vf+59lgCDVyte9kmHKwYXPR7uc6THo9IH6mQwiPAWOCQHUoLCQrGFupj30nk4MUggyWss3ydobo/z1sQ6iYabwAkkwI6H9XNmjgGgTVlCJoBISHN6yTwxLgkYMi40qT4Mevr9XVgd6EmJqOi257YjQ==
+      secure: 3V6QSptnPc6MYQn2S8/BzENJ5YDEn94VmCi2xmTCa0stiRA+hDKpyGaE0eVrW+sIhxIMoas74AE9613+5DVK/FyIFG40cSL1L4x+ePPe1Zm82NL2XMp5uS/G3M0vRPiBd+FOk7jEeAAQ+heUBXbFqw==
     method: post
