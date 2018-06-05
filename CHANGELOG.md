@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.22.727-29 (2018/06/05)
+
+* Upgrade to Brave 0.22.727
+
 ## 0.22.721-29 (2018/06/02)
 
 * Upgrade to Brave 0.22.721
