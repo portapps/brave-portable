@@ -7,7 +7,7 @@ First,
 * Read the [FAQ](http://portapps.github.io/doc/faq/).
 * Search for [existing issues](https://github.com/portapps/brave-portable/issues?utf8=%E2%9C%93&q=).
 
-If it did not help you, [create a new issue](https://github.com/portapps/brave-portable/issues/new)
+If it did not help you, [create a new issue](https://github.com/portapps/brave-portable/issues)
 
 ## Closure policy
 
