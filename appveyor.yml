@@ -3,14 +3,14 @@ version: '{build}'
 platform:
   - x64
 
-clone_folder: C:\gopath\src\github.com\portapps\brave-portable
+clone_folder: C:\projects\brave-portable
 test: off
 
 environment:
   JAVA_HOME: C:\Program Files\Java\jdk1.8.0
   GOPATH: C:\gopath
   GOROOT: C:\go\
-  GOVERSION: 1.9.2
+  GOVERSION: 1.11
 
 install:
   - ps: choco install ant
@@ -28,14 +28,14 @@ configuration:
   - Release
 
 before_build:
-  - go get -u -v github.com/portapps/portapps
+  - git clone https://github.com/portapps/portapps C:\projects\portapps
 
 build_script:
   - ant release
 
 after_build:
   - ps: |
-      $env:APP_VERSION = Get-Content C:\gopath\src\github.com\portapps\brave-portable\bin\tmp\version.dat -Raw
+      $env:APP_VERSION = Get-Content C:\projects\brave-portable\bin\tmp\version.dat -Raw
       Write-Host "App version: $env:APP_VERSION"
 
 artifacts:
