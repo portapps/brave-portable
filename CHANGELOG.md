@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.24.0-39 (2018/09/27)
+
+* Upgrade to Brave 0.24.0
+* Upgrade to Go 1.11
+* Use [go mod](https://golang.org/cmd/go/#hdr-Module_maintenance) instead of `dep`
+
 ## 0.23.105-38 (2018/09/01)
 
 * Upgrade to Brave 0.23.105
