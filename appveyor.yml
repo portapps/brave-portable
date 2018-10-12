@@ -58,5 +58,5 @@ deploy:
 notifications:
   - provider: Webhook
     url:
-      secure: 3V6QSptnPc6MYQn2S8/BzENJ5YDEn94VmCi2xmTCa0stiRA+hDKpyGaE0eVrW+sIhxIMoas74AE9613+5DVK/FyIFG40cSL1L4x+ePPe1Zm82NL2XMp5uS/G3M0vRPiBd+FOk7jEeAAQ+heUBXbFqw==
+      secure: 3V6QSptnPc6MYQn2S8/BzENJ5YDEn94VmCi2xmTCa0tPSUswf2HcFG9Uwa9j8jcnBh7ZitwwLxCT+Y9a+VFrbp816MEPovhoobQkZZKjo2euc+s/s3uXYuy4tS35QYKjr7QgK3yNTzzT6qbhoGPmYg==
     method: post
