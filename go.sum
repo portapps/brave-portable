@@ -1,13 +1,14 @@
 github.com/akavel/rsrc v0.0.0-20170831122431-f6a15ece2cfd h1:yumR8733CaQ3P76MFbIbBKdrJmy4EqnQ5DIhqq8gq2Q=
 github.com/akavel/rsrc v0.0.0-20170831122431-f6a15ece2cfd/go.mod h1:2+aQMrY0hBFBaIr2xxnZ/ctfwnYmMRMbTczYLAC34v4=
+github.com/go-ole/go-ole v1.2.1 h1:2lOsA72HgjxAuMlKpFiCbHTvu44PIVkZ5hqm3RSdI/E=
+github.com/go-ole/go-ole v1.2.1/go.mod h1:7FAglXiTm7HKlQRDeOQ6ZNUHidzCWXuZWq/1dTyBNF8=
 github.com/google/logger v0.0.0-20180208223940-54b4ae679a63 h1:rn2mY9gLAFndN3MKXUp8XvoyyNGX4pud5CJ8EClypDY=
 github.com/google/logger v0.0.0-20180208223940-54b4ae679a63/go.mod h1:tQN+I/DyBt051hEHNEzPgIeyy/GD1WJaKbqPScoDKdY=
 github.com/josephspurrier/goversioninfo v0.0.0-20180220052333-42534847954b h1:66x3jAln/h7rEkx8V1c6zAP/IW4tOlN21OLAJ9d1Vvg=
 github.com/josephspurrier/goversioninfo v0.0.0-20180220052333-42534847954b/go.mod h1:eJTEwMjXb7kZ633hO3Ln9mBUCOjX2+FlTljvpl9SYdE=
 github.com/pkg/errors v0.8.0 h1:WdK/asTD0HN+q6hsWO3/vpuAkAr+tw6aNJNDFFf0+qw=
 github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/portapps/portapps v0.0.0-20180907012234-e28025ce2b66 h1:4qg8+yqHmtWS/KAWV/XJ1xuad1eSO/QF5yhdYDjfAys=
-github.com/portapps/portapps v0.0.0-20180907012234-e28025ce2b66/go.mod h1:mkL9HVCCG3hMU/wuHHRQskU6Km4xwXQkO/H/chJEf28=
-github.com/portapps/portapps v0.0.0-20180928223449-145469a5fd6f/go.mod h1:mkL9HVCCG3hMU/wuHHRQskU6Km4xwXQkO/H/chJEf28=
+github.com/portapps/portapps v0.0.0-20181003014304-a794d990c87f h1:sRh5Asvz8Z/2QcOJKnSBC/fjve/yiH+SGU73ndqtl4Y=
+github.com/portapps/portapps v0.0.0-20181003014304-a794d990c87f/go.mod h1:XA+QPBc5iSAWOB7UQ+2aV2DbXuoUIoJK/5GMMfTWyBo=
 golang.org/x/sys v0.0.0-20180313075820-8c0ece68c283 h1:DE/w7won1Ns86VoWjUZ4cJS6//TObJntGkxuZ63asRc=
 golang.org/x/sys v0.0.0-20180313075820-8c0ece68c283/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
