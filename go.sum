@@ -6,9 +6,9 @@ github.com/google/logger v0.0.0-20180208223940-54b4ae679a63 h1:rn2mY9gLAFndN3MKX
 github.com/google/logger v0.0.0-20180208223940-54b4ae679a63/go.mod h1:tQN+I/DyBt051hEHNEzPgIeyy/GD1WJaKbqPScoDKdY=
 github.com/josephspurrier/goversioninfo v0.0.0-20180220052333-42534847954b h1:66x3jAln/h7rEkx8V1c6zAP/IW4tOlN21OLAJ9d1Vvg=
 github.com/josephspurrier/goversioninfo v0.0.0-20180220052333-42534847954b/go.mod h1:eJTEwMjXb7kZ633hO3Ln9mBUCOjX2+FlTljvpl9SYdE=
-github.com/pkg/errors v0.8.0 h1:WdK/asTD0HN+q6hsWO3/vpuAkAr+tw6aNJNDFFf0+qw=
-github.com/pkg/errors v0.8.0/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/portapps/portapps v0.0.0-20181003014304-a794d990c87f h1:sRh5Asvz8Z/2QcOJKnSBC/fjve/yiH+SGU73ndqtl4Y=
-github.com/portapps/portapps v0.0.0-20181003014304-a794d990c87f/go.mod h1:XA+QPBc5iSAWOB7UQ+2aV2DbXuoUIoJK/5GMMfTWyBo=
+github.com/kevinburke/go-bindata v3.11.0+incompatible h1:GiPs9jxaG2xY1B5Dt/d/yHUOMlTk14uS35VcmHrdo4I=
+github.com/kevinburke/go-bindata v3.11.0+incompatible/go.mod h1:/pEEZ72flUW2p0yi30bslSp9YqD9pysLxunQDdb2CPM=
+github.com/portapps/portapps v0.0.0-20181024181948-e16569932064 h1:0qPLfp5DUnqcAQe+876OfPyZ/OcuHdQ0QVtMXEcxbmc=
+github.com/portapps/portapps v0.0.0-20181024181948-e16569932064/go.mod h1:p1kIoTzL1vIz45ALGcTdNNxvADU6nbdmV+ChLMNP75k=
 golang.org/x/sys v0.0.0-20180313075820-8c0ece68c283 h1:DE/w7won1Ns86VoWjUZ4cJS6//TObJntGkxuZ63asRc=
 golang.org/x/sys v0.0.0-20180313075820-8c0ece68c283/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
