@@ -52,8 +52,6 @@ deploy:
   artifact: release
   draft: true
   prerelease: false
-  on:
-    branch: master
 
 notifications:
   - provider: Webhook
