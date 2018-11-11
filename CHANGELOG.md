@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.25.2-41 (2018/11/11)
+## 0.25.2-42 (2018/11/11)
 
 * Chrome user-data-dir not saved (Issue #8)
 * Upgrade to Go 1.11.2
