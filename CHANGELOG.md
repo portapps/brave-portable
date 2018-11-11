@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.25.2-41 (2018/11/11)
+
+* Chrome user-data-dir not saved (Issue #8)
+* Upgrade to Go 1.11.2
+
 ## 0.25.2-40 (2018/10/12)
 
 * Upgrade to Brave 0.25.2

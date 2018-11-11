@@ -21,7 +21,10 @@ func main() {
 	electronBinPath := PathJoin(Papp.AppPath, FindElectronAppFolder("app-", Papp.AppPath))
 
 	Papp.Process = PathJoin(Papp.AppPath, "Brave.exe")
-	Papp.Args = nil
+	Papp.Args = []string{
+		"--user-data-dir=" + PathJoin(Papp.DataPath, "UserDataDir"),
+		"--no-default-browser-check",
+	}
 	Papp.WorkingDir = electronBinPath
 
 	Launch(os.Args[1:])
