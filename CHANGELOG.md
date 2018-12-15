@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.25.302-43 (2018/12/15)
+
+* Upgrade to Brave 0.25.302
+
 ## 0.25.2-42 (2018/11/11)
 
 * Chrome user-data-dir not saved (Issue #8)
