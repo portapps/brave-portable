@@ -34,8 +34,13 @@
       <replacefilter token="${electron.appasar.search2}" value="${electron.appasar.replace2}"/>
     </replace>
 
-    <echo message="Removing app.asar..."/>
-    <delete file="${build.path}\${papp.folder}\app-${app.version}\resources\app.asar"/>
+    <echo message="Packaging app.asar..."/>
+    <exec executable="asar.cmd" failonerror="true" dir="${build.path}\${papp.folder}\app-${app.version}\resources">
+      <arg value="pack"/>
+      <arg value="app"/>
+      <arg value="app.asar"/>
+    </exec>
+    <delete dir="${build.path}\${papp.folder}\app-${app.version}\resources\app"/>
   </target>
 
 </project>
