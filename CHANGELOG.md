@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.25.302-44 (2018/12/30)
+
+* Disable and hide autoupdate (Issue #10)
+
 ## 0.25.302-43 (2018/12/15)
 
 * Upgrade to Brave 0.25.302

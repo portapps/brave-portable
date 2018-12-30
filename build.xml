@@ -16,4 +16,26 @@
   <!-- Targets -->
   <target name="release" depends="release.app" description="Release"/>
 
+  <target name="prepare">
+    <echo message="Extracting app.asar..."/>
+    <exec executable="asar.cmd" failonerror="true" dir="${build.path}\${papp.folder}\app-${app.version}\resources">
+      <arg value="extract"/>
+      <arg value="app.asar"/>
+      <arg value="app"/>
+    </exec>
+
+    <echo message="Replacing in app.asar..."/>
+    <assertfile file="${build.path}\${papp.folder}\app-${app.version}\resources\app\${electron.appasar.file}"/>
+    <replace file="${build.path}\${papp.folder}\app-${app.version}\resources\app\${electron.appasar.file}">
+      <replacefilter token="${electron.appasar.search}" value="${electron.appasar.replace}"/>
+    </replace>
+    <assertfile file="${build.path}\${papp.folder}\app-${app.version}\resources\app\${electron.appasar.file2}"/>
+    <replace file="${build.path}\${papp.folder}\app-${app.version}\resources\app\${electron.appasar.file2}">
+      <replacefilter token="${electron.appasar.search2}" value="${electron.appasar.replace2}"/>
+    </replace>
+
+    <echo message="Removing app.asar..."/>
+    <delete file="${build.path}\${papp.folder}\app-${app.version}\resources\app.asar"/>
+  </target>
+
 </project>
