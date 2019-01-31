@@ -4,6 +4,10 @@
 
 * Upgrade to Brave 0.61.5
 
+> :warning: **UPGRADE NOTES**
+> * Move everything in `data\*` (except `UserDataDir`) to `data\Default`.
+> * Move everything in `data\UserDataDir\*` to `data` and remove `data\UserDataDir` folder.
+
 ## 0.25.302-44 (2018/12/30)
 
 * Disable and hide autoupdate (Issue #10)
