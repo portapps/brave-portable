@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.61.7-2 (2019/02/05)
+
+* Upgrade to Brave 0.61.7
+* Switch to TravisCI (com)
+
 ## 0.61.5-45 (2019/01/31)
 
 * Upgrade to Brave 0.61.5
