@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.61.43-7 (2019/03/02)
+
+* Upgrade to Brave 0.61.43
+
 ## 0.61.36-6 (2019/02/24)
 
 * Upgrade to Brave 0.61.36
