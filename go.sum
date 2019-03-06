@@ -10,8 +10,8 @@ github.com/kevinburke/go-bindata v3.13.0+incompatible h1:hThDhUBH4KjTyhfXfOgacEP
 github.com/kevinburke/go-bindata v3.13.0+incompatible/go.mod h1:/pEEZ72flUW2p0yi30bslSp9YqD9pysLxunQDdb2CPM=
 github.com/mitchellh/mapstructure v1.1.2 h1:fmNYVwqnSfB9mZU6OS2O6GsXM+wcskZDuKQzvN1EDeE=
 github.com/mitchellh/mapstructure v1.1.2/go.mod h1:FVVH3fgwuzCH5S8UJGiWEs2h04kUh9fWfEaFds41c1Y=
-github.com/portapps/portapps v1.19.1 h1:tk/mDa1s1aVHmIzh1PEUgvA2sL9dXIKegx4fQ36aQhc=
-github.com/portapps/portapps v1.19.1/go.mod h1:rO2TLBgQKw+qGyEt1FnE1tmM+F/qrKm5LzQdqBkM6i0=
+github.com/portapps/portapps v1.19.2 h1:zCypumfoyVCyi87yVbKxd9e8QN4vgcKfjeVpUh2/pn4=
+github.com/portapps/portapps v1.19.2/go.mod h1:rO2TLBgQKw+qGyEt1FnE1tmM+F/qrKm5LzQdqBkM6i0=
 golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a h1:1BGLXjeY4akVXGgbC9HugT3Jv3hCI0z56oJR5vAMgBU=
 golang.org/x/sys v0.0.0-20190215142949-d0b11bdaac8a/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
