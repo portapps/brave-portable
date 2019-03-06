@@ -20,7 +20,7 @@ import (
 func bindataRead(data []byte, name string) ([]byte, error) {
 	gz, err := gzip.NewReader(bytes.NewBuffer(data))
 	if err != nil {
-		return nil, fmt.Errorf("read %q: %v", name, err)
+		return nil, fmt.Errorf("Read %q: %v", name, err)
 	}
 
 	var buf bytes.Buffer
@@ -28,7 +28,7 @@ func bindataRead(data []byte, name string) ([]byte, error) {
 	clErr := gz.Close()
 
 	if err != nil {
-		return nil, fmt.Errorf("read %q: %v", name, err)
+		return nil, fmt.Errorf("Read %q: %v", name, err)
 	}
 	if clErr != nil {
 		return nil, err
@@ -84,7 +84,7 @@ func braveLnk() (*asset, error) {
 		return nil, err
 	}
 
-	info := bindataFileInfo{name: "Brave.lnk", size: 1847, mode: os.FileMode(0666), modTime: time.Unix(1548942937, 0)}
+	info := bindataFileInfo{name: "Brave.lnk", size: 1847, mode: os.FileMode(438), modTime: time.Unix(1548942937, 0)}
 	a := &asset{bytes: bytes, info: info, digest: [32]uint8{0x31, 0xd4, 0x6d, 0xa9, 0x8b, 0xc9, 0xac, 0x3c, 0xe7, 0x1f, 0x25, 0xba, 0x79, 0x20, 0x8b, 0xf9, 0x53, 0x41, 0xb7, 0x36, 0xe2, 0x8a, 0x33, 0x2, 0xb7, 0x16, 0xfe, 0xa7, 0x74, 0xe8, 0xee, 0xe2}}
 	return a, nil
 }

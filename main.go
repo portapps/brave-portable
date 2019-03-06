@@ -12,6 +12,7 @@ import (
 	_ "github.com/kevinburke/go-bindata"
 	"github.com/portapps/brave-portable/assets"
 	. "github.com/portapps/portapps"
+	"github.com/portapps/portapps/pkg/shortcut"
 )
 
 func init() {
@@ -48,19 +49,18 @@ func main() {
 	}
 
 	// Update default shortcut
-	err = CreateShortcut(WindowsShortcut{
+	err = shortcut.Create(shortcut.Shortcut{
 		ShortcutPath:     shortcutPath,
 		TargetPath:       Papp.Process,
-		Arguments:        WindowsShortcutProperty{Clear: true},
-		Description:      WindowsShortcutProperty{Value: "Brave Portable by Portapps"},
-		IconLocation:     WindowsShortcutProperty{Value: Papp.Process},
-		WorkingDirectory: WindowsShortcutProperty{Value: Papp.AppPath},
+		Arguments:        shortcut.Property{Clear: true},
+		Description:      shortcut.Property{Value: "Brave Portable by Portapps"},
+		IconLocation:     shortcut.Property{Value: Papp.Process},
+		WorkingDirectory: shortcut.Property{Value: Papp.AppPath},
 	})
+	defer os.Remove(shortcutPath)
 	if err != nil {
 		Log.Error("Cannot create shortcut:", err)
 	}
 
 	Launch(os.Args[1:])
-
-	_ = os.Remove(shortcutPath)
 }
