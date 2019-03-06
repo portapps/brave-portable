@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.61.45-9 (2019/03/06)
+
+* Fix error at launch
+* Portapps 1.19.2
+
 ## 0.61.45-8 (2019/03/06)
 
 * Upgrade to Brave 0.61.45
