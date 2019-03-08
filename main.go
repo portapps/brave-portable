@@ -13,20 +13,26 @@ import (
 	"github.com/portapps/brave-portable/assets"
 	. "github.com/portapps/portapps"
 	"github.com/portapps/portapps/pkg/shortcut"
+	"github.com/portapps/portapps/pkg/utl"
+)
+
+var (
+	app *App
 )
 
 func init() {
-	Papp.ID = "brave-portable"
-	Papp.Name = "Brave"
-	Init()
+	var err error
+
+	// Init app
+	if app, err = New("brave-portable", "Brave"); err != nil {
+		Log.Fatal().Err(err).Msg("Cannot initialize application. See log file for more info.")
+	}
 }
 
 func main() {
-	Papp.AppPath = AppPathJoin("app")
-	Papp.DataPath = CreateFolder(AppPathJoin("data"))
-	Papp.Process = PathJoin(Papp.AppPath, "brave.exe")
-	Papp.Args = []string{
-		"--user-data-dir=" + Papp.DataPath,
+	app.Process = utl.PathJoin(app.AppPath, "brave.exe")
+	app.Args = []string{
+		"--user-data-dir=" + app.DataPath,
 		"--disable-brave-update",
 		"--no-default-browser-check",
 		"--allow-outdated-plugins",
@@ -35,32 +41,35 @@ func main() {
 		"--disable-machine-id",
 		"--disable-encryption-win",
 	}
-	Papp.WorkingDir = Papp.AppPath
 
 	// Copy default shortcut
 	shortcutPath := path.Join(os.Getenv("APPDATA"), "Microsoft", "Windows", "Start Menu", "Programs", "Brave Portable.lnk")
 	defaultShortcut, err := assets.Asset("Brave.lnk")
 	if err != nil {
-		Log.Error("Cannot load asset Brave.lnk:", err)
+		Log.Error().Err(err).Msg("Cannot load asset Brave.lnk")
 	}
 	err = ioutil.WriteFile(shortcutPath, defaultShortcut, 0644)
 	if err != nil {
-		Log.Error("Cannot write default shortcut:", err)
+		Log.Error().Err(err).Msg("Cannot write default shortcut")
 	}
 
 	// Update default shortcut
 	err = shortcut.Create(shortcut.Shortcut{
 		ShortcutPath:     shortcutPath,
-		TargetPath:       Papp.Process,
+		TargetPath:       app.Process,
 		Arguments:        shortcut.Property{Clear: true},
 		Description:      shortcut.Property{Value: "Brave Portable by Portapps"},
-		IconLocation:     shortcut.Property{Value: Papp.Process},
-		WorkingDirectory: shortcut.Property{Value: Papp.AppPath},
+		IconLocation:     shortcut.Property{Value: app.Process},
+		WorkingDirectory: shortcut.Property{Value: app.AppPath},
 	})
-	defer os.Remove(shortcutPath)
 	if err != nil {
-		Log.Error("Cannot create shortcut:", err)
+		Log.Error().Err(err).Msg("Cannot create shortcut")
 	}
+	defer func() {
+		if err := os.Remove(shortcutPath); err != nil {
+			Log.Error().Err(err).Msg("Cannot remove shortcut")
+		}
+	}()
 
-	Launch(os.Args[1:])
+	app.Launch(os.Args[1:])
 }
