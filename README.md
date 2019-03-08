@@ -1,4 +1,4 @@
-<p align="center"><a href="https://portapps.io/app/brave-portable" target="_blank"><img width="100" src="https://github.com/portapps/brave-portable/blob/master/res/papp.png"></a></p>
+<p align="center"><a href="https://portapps.io/app/brave-portable/" target="_blank"><img width="100" src="https://github.com/portapps/brave-portable/blob/master/res/papp.png"></a></p>
 
 <p align="center">
   <a href="https://portapps.io/app/brave-portable/#download"><img src="https://img.shields.io/github/release/portapps/brave-portable.svg?style=flat-square" alt="GitHub release"></a>
@@ -12,7 +12,7 @@
 ## About
 
 [Brave](https://brave.com) portable app made with 🚀 [Portapps](https://github.com/portapps).<br />
-Documentation and downloads can be found on https://portapps.io/app/brave-portable
+Documentation and downloads can be found on https://portapps.io/app/brave-portable/
 
 ## How can I help ?
 
