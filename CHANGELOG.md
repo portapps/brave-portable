@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.62.27-11 (2019/03/15)
+
+* Upgrade to Brave 0.62.27
+* Portapps 1.20.2
+
 ## 0.62.25-10 (2019/03/09)
 
 * Upgrade to Brave 0.62.25
