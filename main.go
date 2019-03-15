@@ -30,6 +30,7 @@ func init() {
 }
 
 func main() {
+	utl.CreateFolder(app.DataPath)
 	app.Process = utl.PathJoin(app.AppPath, "brave.exe")
 	app.Args = []string{
 		"--user-data-dir=" + app.DataPath,
