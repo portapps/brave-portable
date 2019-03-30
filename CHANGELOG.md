@@ -1,18 +1,23 @@
 # Changelog
 
+## 0.62.47-13 (2019/03/30)
+
+* Brave 0.62.47
+* Portapps 1.21.0
+
 ## 0.62.37-12 (2019/03/21)
 
-* Upgrade to Brave 0.62.37
+* Brave 0.62.37
 * Portapps 1.20.3
 
 ## 0.62.27-11 (2019/03/15)
 
-* Upgrade to Brave 0.62.27
+* Brave 0.62.27
 * Portapps 1.20.2
 
 ## 0.62.25-10 (2019/03/09)
 
-* Upgrade to Brave 0.62.25
+* Brave 0.62.25
 * Portapps 1.20.1
 
 ## 0.61.45-9 (2019/03/06)
@@ -22,33 +27,33 @@
 
 ## 0.61.45-8 (2019/03/06)
 
-* Upgrade to Brave 0.61.45
+* Brave 0.61.45
 * Portapps 1.19.1
 
 ## 0.61.43-7 (2019/03/02)
 
-* Upgrade to Brave 0.61.43
+* Brave 0.61.43
 
 ## 0.61.36-6 (2019/02/24)
 
-* Upgrade to Brave 0.61.36
+* Brave 0.61.36
 
 ## 0.61.22-5 (2019/02/16)
 
-* Upgrade to Brave 0.61.22
+* Brave 0.61.22
 
 ## 0.61.17-3 (2019/02/08)
 
-* Upgrade to Brave 0.61.17
+* Brave 0.61.17
 
 ## 0.61.7-2 (2019/02/05)
 
-* Upgrade to Brave 0.61.7
+* Brave 0.61.7
 * Switch to TravisCI
 
 ## 0.61.5-45 (2019/01/31)
 
-* Upgrade to Brave 0.61.5
+* Brave 0.61.5
 
 > :warning: **UPGRADE NOTES**
 > * Move everything in `data\*` (except `UserDataDir`) to `data\Default`.
@@ -60,82 +65,82 @@
 
 ## 0.25.302-43 (2018/12/15)
 
-* Upgrade to Brave 0.25.302
+* Brave 0.25.302
 
 ## 0.25.2-42 (2018/11/11)
 
 * Chrome user-data-dir not saved (Issue #8)
-* Upgrade to Go 1.11.2
+* Go 1.11.2
 
 ## 0.25.2-40 (2018/10/12)
 
-* Upgrade to Brave 0.25.2
+* Brave 0.25.2
 
 ## 0.24.0-39 (2018/09/27)
 
-* Upgrade to Brave 0.24.0
-* Upgrade to Go 1.11
+* Brave 0.24.0
+* Go 1.11
 * Use [go mod](https://golang.org/cmd/go/#hdr-Module_maintenance) instead of `dep`
 
 ## 0.23.105-38 (2018/09/01)
 
-* Upgrade to Brave 0.23.105
+* Brave 0.23.105
 
 ## 0.23.79-37 (2018/08/15)
 
-* Upgrade to Brave 0.23.79
+* Brave 0.23.79
 
 ## 0.23.77-36 (2018/08/07)
 
-* Upgrade to Brave 0.23.77
+* Brave 0.23.77
 
 ## 0.23.73-35 (2018/08/03)
 
-* Upgrade to Brave 0.23.73 
+* Brave 0.23.73 
 
 ## 0.23.39-34 (2018/07/19)
 
-* Upgrade to Brave 0.23.39 
+* Brave 0.23.39 
 
 ## 0.23.31-33 (2018/07/12)
 
-* Upgrade to Brave 0.23.31
+* Brave 0.23.31
 
 ## 0.23.19-32 (2018/07/03)
 
-* Upgrade to Brave 0.23.19
+* Brave 0.23.19
 
 ## 0.22.810-31 (2018/06/21)
 
-* Upgrade to Brave 0.22.810
+* Brave 0.22.810
 
 ## 0.22.727-30 (2018/06/05)
 
-* Upgrade to Brave 0.22.727
+* Brave 0.22.727
 
 ## 0.22.721-29 (2018/06/02)
 
-* Upgrade to Brave 0.22.721
+* Brave 0.22.721
 
 ## 0.22.714-28 (2018/05/23)
 
-* Upgrade to Brave 0.22.714
+* Brave 0.22.714
 
 ## 0.22.667-27 (2018/04/26)
 
-* Upgrade to Brave 0.22.667
+* Brave 0.22.667
 
 ## 0.22.22-26 (2018/04/20)
 
-* Upgrade to Brave 0.22.22
+* Brave 0.22.22
 
 ## 0.22.13-25 (2018/04/05)
 
-* Upgrade to Brave 0.22.13
+* Brave 0.22.13
 
 ## 0.21.18-24 (2018/03/02)
 
-* Upgrade to Brave 0.21.18
+* Brave 0.21.18
 
 ## 0.20.30-23 (2018/02/11)
 
@@ -144,16 +149,16 @@
 
 ## 0.20.30-22 (2018/02/08)
 
-* Upgrade to Brave 0.20.30
+* Brave 0.20.30
 * Ability to pass custom args to the portable process
 
 ## 0.19.139-21 (2018/01/21)
 
-* Upgrade to Brave 0.19.139
+* Brave 0.19.139
 
 ## 0.19.134-20 (2018/01/13)
 
-* Upgrade to Brave 0.19.134
+* Brave 0.19.134
 * Rebuild electron.asar to push data directly in `data` subfolder
 * No need to override USERPROFILE environment variable anymore
 
@@ -162,19 +167,19 @@
 
 ## 0.19.131-19 (2018/01/12)
 
-* Upgrade to Brave 0.19.131
+* Brave 0.19.131
 
 ## 0.19.122-18 (2017/12/27)
 
-* Upgrade to Brave 0.19.122
+* Brave 0.19.122
 
 ## 0.19.116-17 (2017/12/14)
 
-* Upgrade to Brave 0.19.116
+* Brave 0.19.116
 
 ## 0.19.105-16 (2017/12/09)
 
-* Upgrade to Brave 0.19.105
+* Brave 0.19.105
 
 ## 0.19.95-15 (2017/11/21)
 
@@ -187,26 +192,26 @@
 
 ## 0.19.95-14 (2017/11/17)
 
-* Upgrade to Brave 0.19.95
+* Brave 0.19.95
 * Move repository to [Portapps](https://github.com/portapps) org
 
 ## 0.19.88-13 (2017/11/11)
 
-* Upgrade to Brave 0.19.88
+* Brave 0.19.88
 
 ## 0.19.48-12 (2017/10/29)
 
-* Upgrade to Brave 0.19.70
+* Brave 0.19.70
 * Switch to [Golang Dep](https://github.com/golang/dep) as dependency manager
-* Upgrade to Go 1.9.1
+* Go 1.9.1
 
 ## 0.19.48-11 (2017/10/15)
 
-* Upgrade to Brave 0.19.48
+* Brave 0.19.48
 
 ## 0.18.36-10 (2017/09/16)
 
-* Upgrade to Brave 0.18.36
+* Brave 0.18.36
 * Change logger
 
 ## 0.18.23-9 (2017/09/05)
@@ -222,35 +227,35 @@
 ## 0.18.23-8 (2017/08/26)
 
 * Heuristic detection (Issue #2)
-* Upgrade to Go 1.9
+* Go 1.9
 * Add support guidelines
-* Upgrade to Brave 0.18.23
+* Brave 0.18.23
 
 ## 0.18.14-7 (2017/08/09)
 
-* Upgrade to Brave 0.18.14
+* Brave 0.18.14
 
 ## 0.17.19-6 (2017/07/23)
 
-* Upgrade to Brave 0.17.19
+* Brave 0.17.19
 * Admin privileges not required for Setup
 * Small refactoring
 
 ## 0.17.13-5 (2017/07/09)
 
-* Upgrade to Brave 0.17.13
+* Brave 0.17.13
 
 ## 0.16.9-4 (2017/05/31)
 
-* Upgrade to Brave 0.16.9
+* Brave 0.16.9
 
 ## 0.15.310-3 (2017/05/31)
 
-* Upgrade to Brave 0.15.310
+* Brave 0.15.310
 
 ## 0.15.2-2 (2017/05/14)
 
-* Upgrade to Brave 0.15.2
+* Brave 0.15.2
 * Provide the nupkg file in the release
 * Add Go report card
 * Move log file to the root folder
