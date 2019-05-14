@@ -10,9 +10,15 @@
   <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WQD7AQGPDEPSG"><img src="https://img.shields.io/badge/donate-paypal-7057ff.svg?style=flat-square" alt="Donate Paypal"></a>
 </p>
 
+## Notice of Non-Affiliation and Disclaimer
+
+Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Brave, or any of its subsidiaries or its affiliates. The official Brave website can be found at https://brave.com.
+
+The name Brave® as well as related names, marks, emblems and images are registered trademarks of their respective owners.
+
 ## About
 
-[Brave](https://brave.com) portable app made with 🚀 [Portapps](https://github.com/portapps).<br />
+Brave portable app made with 🚀 [Portapps](https://github.com/portapps).<br />
 Documentation and downloads can be found on https://portapps.io/app/brave-portable/
 
 ## How can I help ?
