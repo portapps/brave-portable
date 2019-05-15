@@ -12,13 +12,15 @@
 
 ## Notice of Non-Affiliation and Disclaimer
 
-Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Brave, or any of its subsidiaries or its affiliates. The official Brave website can be found at https://brave.com.
+Portapps is not affiliated, associated, authorized, endorsed by, or in any way officially connected with Brave™, or any of its subsidiaries or its affiliates.
 
-The name Brave® as well as related names, marks, emblems and images are registered trademarks of their respective owners.
+The official Brave™ website can be found at https://brave.com.
+
+The name Brave™ as well as related names, marks, emblems and images are registered trademarks of their respective owners.
 
 ## About
 
-Brave portable app made with 🚀 [Portapps](https://github.com/portapps).<br />
+Brave™ portable app made with 🚀 [Portapps](https://github.com/portapps).<br />
 Documentation and downloads can be found on https://portapps.io/app/brave-portable/
 
 ## How can I help ?
