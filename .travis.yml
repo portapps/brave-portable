@@ -13,7 +13,6 @@ before_install:
   - bash ${TRAVIS_BUILD_DIR}/../portapps/.travis/ant.sh
   - bash ${TRAVIS_BUILD_DIR}/../portapps/.travis/nodejs.sh
   - bash ${TRAVIS_BUILD_DIR}/../portapps/.travis/go.sh
-  - set
 
 script:
   - ant release
