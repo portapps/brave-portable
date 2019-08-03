@@ -25,7 +25,7 @@
     <sevenzip-ax src="${extract.path}\chrome.7z" dest="${extract.path2}"/>
     <delete dir="${extract.path}"/>
     <move todir="${extract.path}">
-      <fileset dir="${extract.path2}\Chrome-bin"/>
+      <fileset dir="${extract.path2}\Chrome-bin" defaultexcludes="no"/>
     </move>
   </target>
 
