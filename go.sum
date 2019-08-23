@@ -12,8 +12,8 @@ github.com/mitchellh/mapstructure v1.1.2 h1:fmNYVwqnSfB9mZU6OS2O6GsXM+wcskZDuKQz
 github.com/mitchellh/mapstructure v1.1.2/go.mod h1:FVVH3fgwuzCH5S8UJGiWEs2h04kUh9fWfEaFds41c1Y=
 github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/portapps/portapps v1.25.0 h1:gtydB01+Sb0gj+I8sJ/uD0ysB8WgTPDbu1kg8sznKfA=
-github.com/portapps/portapps v1.25.0/go.mod h1:moHBbP37oZnyrc0jjlY3ZW9R+W43/XHGgkHJ9m77W0g=
+github.com/portapps/portapps v1.26.0 h1:zNuZC/hoa2jVUvSmdRuCTUHRUzeLJJbneqrHK3foYs0=
+github.com/portapps/portapps v1.26.0/go.mod h1:moHBbP37oZnyrc0jjlY3ZW9R+W43/XHGgkHJ9m77W0g=
 github.com/rs/zerolog v1.13.0 h1:hSNcYHyxDWycfePW7pUI8swuFkcSMPKh3E63Pokg1Hk=
 github.com/rs/zerolog v1.13.0/go.mod h1:YbFCdg8HfsridGWAh22vktObvhZbQsZXe4/zB0OKkWU=
 golang.org/x/sys v0.0.0-20190416152802-12500544f89f/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
