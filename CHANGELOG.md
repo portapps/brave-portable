@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.68.138-31 (2019/09/19)
+
+* Brave 0.68.138
+* Remove allow-outdated-plugins flag
+* Portapps 1.26.1
+
 ## 0.68.132-30 (2019/08/29)
 
 * Brave 0.68.132
