@@ -36,7 +36,6 @@ func main() {
 		"--user-data-dir=" + app.DataPath,
 		"--disable-brave-update",
 		"--no-default-browser-check",
-		"--allow-outdated-plugins",
 		"--disable-logging",
 		"--disable-breakpad",
 		"--disable-machine-id",
