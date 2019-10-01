@@ -3,7 +3,7 @@ language: shell
 
 env:
   global:
-    - GOVERSION: 1.12.4
+    - GOVERSION: 1.12.10
     - NODEJS_VERSION: 11.14.0
 
 before_install:
