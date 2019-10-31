@@ -3,7 +3,10 @@
   name: ":robot: bot"
   color: "69cde9"
   description: ""
-- # bug
+- # broken
+  name: ":zap: broken"
+  color: "a3090e"
+  description: ""
   name: ":bug: bug"
   color: "b60205"
   description: ""
