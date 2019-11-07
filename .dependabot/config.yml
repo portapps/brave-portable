@@ -6,3 +6,6 @@ update_configs:
     default_labels:
       - ":game_die: dependencies"
       - ":robot: bot"
+    automerged_updates:
+      - match:
+          dependency_name: "github.com/portapps/portapps"
