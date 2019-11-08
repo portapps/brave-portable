@@ -17,6 +17,8 @@ github.com/portapps/portapps v1.29.0 h1:v7U7gtxmBA1SdeRuAN+yLihbjJbBtrcGVrbJvVEh
 github.com/portapps/portapps v1.29.0/go.mod h1:pOI/FRCE+qjNnit0css1hvIJWPf7O4c8u8g/w5p08a8=
 github.com/portapps/portapps v1.30.0 h1:lpRXpajQJ9fmf3bvZHNnO9/EqoiH5SBg8i1smOsgrhE=
 github.com/portapps/portapps v1.30.0/go.mod h1:pOI/FRCE+qjNnit0css1hvIJWPf7O4c8u8g/w5p08a8=
+github.com/portapps/portapps v1.30.1 h1:1GzJF+LPfiad6/VZGoJV2+sRtVFucLnjetschbOYCNo=
+github.com/portapps/portapps v1.30.1/go.mod h1:pOI/FRCE+qjNnit0css1hvIJWPf7O4c8u8g/w5p08a8=
 github.com/rs/xid v1.2.1/go.mod h1:+uKXf+4Djp6Md1KODXJxgGQPKngRmWyn10oCKFzNHOQ=
 github.com/rs/zerolog v1.16.0 h1:AaELmZdcJHT8m6oZ5py4213cdFK8XGXkB3dFdAQ+P7Q=
 github.com/rs/zerolog v1.16.0/go.mod h1:9nvC1axdVrAHcu/s9taAVfBuIdTZLVQmKQyvrUjF5+I=
