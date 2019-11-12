@@ -67,6 +67,10 @@
   name: ":question: question"
   color: "3f51b5"
   description: ""
+- # trademark violation
+  name: ":construction: trademark violation"
+  color: "cfe524"
+  description: ""
 - # upstream
   name: ":eyes: upstream"
   color: "fbca04"
