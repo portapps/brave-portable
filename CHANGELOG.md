@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.22-43 (2019/12/17)
+
+* Brave 1.1.22
+* Add `cleanup` config
+* Portapps 1.31.0
+
 ## 1.1.20-42 (2019/12/11)
 
 * Brave 1.1.20
