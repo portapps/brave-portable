@@ -60,18 +60,6 @@ func main() {
 				path.Join(os.Getenv("APPDATA"), "BraveSoftware"),
 				path.Join(os.Getenv("LOCALAPPDATA"), "BraveSoftware"),
 			})
-			if err := registry.Delete(registry.Key{
-				Key:  `HKCU\SOFTWARE\BraveSoftware`,
-				Arch: "32",
-			}, true); err != nil {
-				log.Error().Err(err).Msg("Cannot remove registry key")
-			}
-			if err := registry.Delete(registry.Key{
-				Key:  `HKCU\SOFTWARE\Brave-Browser-Development`,
-				Arch: "32",
-			}, true); err != nil {
-				log.Error().Err(err).Msg("Cannot remove registry key")
-			}
 		}()
 	}
 
@@ -101,6 +89,41 @@ func main() {
 	defer func() {
 		if err := os.Remove(shortcutPath); err != nil {
 			log.Error().Err(err).Msg("Cannot remove shortcut")
+		}
+	}()
+
+	// Registry keys
+	regsPath := utl.CreateFolder(app.RootPath, "reg")
+	bsRegKey := registry.Key{
+		Key:  `HKCU\SOFTWARE\BraveSoftware`,
+		Arch: "32",
+	}
+	bbdRegKey := registry.Key{
+		Key:  `HKCU\SOFTWARE\Brave-Browser-Development`,
+		Arch: "32",
+	}
+
+	if err := registry.Import(bsRegKey, utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
+		log.Error().Err(err).Msg("Cannot import registry key")
+	}
+	if err := registry.Import(bbdRegKey, utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
+		log.Error().Err(err).Msg("Cannot import registry key")
+	}
+
+	defer func() {
+		if err := registry.Export(bsRegKey, utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
+			log.Error().Err(err).Msg("Cannot export registry key")
+		}
+		if err := registry.Export(bbdRegKey, utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
+			log.Error().Err(err).Msg("Cannot export registry key")
+		}
+		if cfg.Cleanup {
+			if err := registry.Delete(bsRegKey, true); err != nil {
+				log.Error().Err(err).Msg("Cannot remove registry key")
+			}
+			if err := registry.Delete(bbdRegKey, true); err != nil {
+				log.Error().Err(err).Msg("Cannot remove registry key")
+			}
 		}
 	}()
 

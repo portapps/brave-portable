@@ -1,8 +1,9 @@
 # Changelog
 
-## 1.5.115-51 (2020/03/25)
+## 1.5.123-52 (2020/04/12)
 
 * Brave 1.5.123
+* Handle registry keys
 * Cleanup more folders and registry key (#52)
 * Portapps 2.0.2
 
