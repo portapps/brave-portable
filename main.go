@@ -66,6 +66,12 @@ func main() {
 			}, true); err != nil {
 				log.Error().Err(err).Msg("Cannot remove registry key")
 			}
+			if err := registry.Delete(registry.Key{
+				Key:  `HKCU\SOFTWARE\Brave-Browser-Development`,
+				Arch: "32",
+			}, true); err != nil {
+				log.Error().Err(err).Msg("Cannot remove registry key")
+			}
 		}()
 	}
 
