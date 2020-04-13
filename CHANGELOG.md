@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.123-53 (2020/04/13)
+
+* Update Brave AUMID to `Brave.FBYQ76CEUOPALZ7BHMWP23ZYXI` (#53)
+
 ## 1.5.123-52 (2020/04/12)
 
 * Brave 1.5.123
