@@ -3,6 +3,7 @@
 ## 1.5.123-53 (2020/04/13)
 
 * Update Brave AUMID to `Brave.FBYQ76CEUOPALZ7BHMWP23ZYXI` (#53)
+* Portapps 2.1.2
 
 ## 1.5.123-52 (2020/04/12)
 
