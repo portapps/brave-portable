@@ -4,7 +4,7 @@ os: windows
 language: shell
 
 before_install:
-  - export PORTAPPS_VERSION=$(cat go.mod | grep github.com/portapps/portapps | awk '{print $2}')
+  - export PORTAPPS_VERSION=$(cat go.mod | grep github.com/portapps/portapps | awk '{print $NF}')
 
 import:
   - portapps/portapps:.travis/configs/install.yml@v2.1.2
