@@ -103,25 +103,25 @@ func main() {
 		Arch: "32",
 	}
 
-	if err := registry.Import(bsRegKey, utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
+	if err := bsRegKey.Import(utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
 		log.Error().Err(err).Msg("Cannot import registry key")
 	}
-	if err := registry.Import(bbdRegKey, utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
+	if err := bbdRegKey.Import(utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
 		log.Error().Err(err).Msg("Cannot import registry key")
 	}
 
 	defer func() {
-		if err := registry.Export(bsRegKey, utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
+		if err := bsRegKey.Export(utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
 			log.Error().Err(err).Msg("Cannot export registry key")
 		}
-		if err := registry.Export(bbdRegKey, utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
+		if err := bbdRegKey.Export(utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
 			log.Error().Err(err).Msg("Cannot export registry key")
 		}
 		if cfg.Cleanup {
-			if err := registry.Delete(bsRegKey, true); err != nil {
+			if err := bsRegKey.Delete(true); err != nil {
 				log.Error().Err(err).Msg("Cannot remove registry key")
 			}
-			if err := registry.Delete(bbdRegKey, true); err != nil {
+			if err := bbdRegKey.Delete(true); err != nil {
 				log.Error().Err(err).Msg("Cannot remove registry key")
 			}
 		}
