@@ -7,9 +7,9 @@ before_install:
   - export PORTAPPS_VERSION=$(cat go.mod | grep github.com/portapps/portapps | awk '{print $NF}')
 
 import:
-  - portapps/portapps:.travis/configs/install.yml@v2.2.3
-  - portapps/portapps:.travis/configs/build.yml@v2.2.3
-  - portapps/portapps:.travis/configs/set-version.yml@v2.2.3
-  - portapps/portapps:.travis/configs/git-config.yml@v2.2.3
-  - portapps/portapps:.travis/configs/deploy.yml@v2.2.3
-  - portapps/portapps:.travis/configs/notifs.yml@v2.2.3
+  - portapps/portapps:.travis/configs/install.yml@v2.2.4
+  - portapps/portapps:.travis/configs/build.yml@v2.2.4
+  - portapps/portapps:.travis/configs/set-version.yml@v2.2.4
+  - portapps/portapps:.travis/configs/git-config.yml@v2.2.4
+  - portapps/portapps:.travis/configs/deploy.yml@v2.2.4
+  - portapps/portapps:.travis/configs/notifs.yml@v2.2.4
