@@ -9,13 +9,13 @@ github.com/josephspurrier/goversioninfo v0.0.0-20200309025242-14b0ab84c6ca h1:oz
 github.com/josephspurrier/goversioninfo v0.0.0-20200309025242-14b0ab84c6ca/go.mod h1:eJTEwMjXb7kZ633hO3Ln9mBUCOjX2+FlTljvpl9SYdE=
 github.com/kevinburke/go-bindata v3.19.0+incompatible h1:iB9FY0D/WyDVmzrfVbDKQJqtt653re1Ek0W+XobkhUU=
 github.com/kevinburke/go-bindata v3.19.0+incompatible/go.mod h1:/pEEZ72flUW2p0yi30bslSp9YqD9pysLxunQDdb2CPM=
-github.com/mitchellh/mapstructure v1.3.0 h1:iDwIio/3gk2QtLLEsqU5lInaMzos0hDTz8a6lazSFVw=
-github.com/mitchellh/mapstructure v1.3.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
+github.com/mitchellh/mapstructure v1.3.1 h1:cCBH2gTD2K0OtLlv/Y5H01VQCqmlDxz30kS5Y5bqfLA=
+github.com/mitchellh/mapstructure v1.3.1/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/portapps/portapps/v2 v2.3.0 h1:4N4uEJ2MFBwi5CJ17l0sMf3MTx75M/OYhthSKp/yX9w=
-github.com/portapps/portapps/v2 v2.3.0/go.mod h1:iOZZRkZkzfsgdK7dHMxE5bbiCh3QO1VT0mKMigsR0hQ=
+github.com/portapps/portapps/v2 v2.4.0 h1:+rzOAvua6llR334t3tZRxrJQsuE3OZJoqIbR6NeMBkc=
+github.com/portapps/portapps/v2 v2.4.0/go.mod h1:lkUrpXB0yAf1LBS9UllY2pFp57mLvJgxn+1OnqmV0yU=
 github.com/rs/xid v1.2.1/go.mod h1:+uKXf+4Djp6Md1KODXJxgGQPKngRmWyn10oCKFzNHOQ=
 github.com/rs/zerolog v1.18.0 h1:CbAm3kP2Tptby1i9sYy2MGRg0uxIN9cyDb59Ys7W8z8=
 github.com/rs/zerolog v1.18.0/go.mod h1:9nvC1axdVrAHcu/s9taAVfBuIdTZLVQmKQyvrUjF5+I=
