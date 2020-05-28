@@ -14,8 +14,8 @@ github.com/mitchellh/mapstructure v1.3.1/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RR
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
-github.com/portapps/portapps/v2 v2.4.0 h1:+rzOAvua6llR334t3tZRxrJQsuE3OZJoqIbR6NeMBkc=
-github.com/portapps/portapps/v2 v2.4.0/go.mod h1:lkUrpXB0yAf1LBS9UllY2pFp57mLvJgxn+1OnqmV0yU=
+github.com/portapps/portapps/v2 v2.4.4 h1:a+cT8/36MNKzoAEFs0Pt1x7sJ0UpQnZtlQZ1d+iu/rk=
+github.com/portapps/portapps/v2 v2.4.4/go.mod h1:lkUrpXB0yAf1LBS9UllY2pFp57mLvJgxn+1OnqmV0yU=
 github.com/rs/xid v1.2.1/go.mod h1:+uKXf+4Djp6Md1KODXJxgGQPKngRmWyn10oCKFzNHOQ=
 github.com/rs/zerolog v1.18.0 h1:CbAm3kP2Tptby1i9sYy2MGRg0uxIN9cyDb59Ys7W8z8=
 github.com/rs/zerolog v1.18.0/go.mod h1:9nvC1axdVrAHcu/s9taAVfBuIdTZLVQmKQyvrUjF5+I=
