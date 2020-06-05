@@ -1,0 +1,21 @@
+name: released
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  virustotal:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: VirusTotal Scan
+        id: vt
+        uses: crazy-max/ghaction-virustotal@v2
+        with:
+          vt_api_key: ${{ secrets.VT_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            *-portable.exe
+            *-portable-win32.exe
+            *-portable-win64.exe
