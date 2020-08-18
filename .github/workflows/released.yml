@@ -9,12 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Prepare
+        id: prepare
+        run: |
+          echo ::set-output name=date::$(date -u +'%Y%m%d')
+      -
         name: VirusTotal Monitor Scan
         uses: crazy-max/ghaction-virustotal@v2.2.0
         with:
           vt_api_key: ${{ secrets.VT_MONITOR_API_KEY }}
           vt_monitor: true
-          monitor_path: /${{ github.event.repository.name }}/${{ github.event.release.tag_name }}
+          monitor_path: /portapps/${{ steps.prepare.outputs.date }}/${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
           update_release_body: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
           files: |
