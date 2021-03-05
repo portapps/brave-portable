@@ -1,8 +1,8 @@
 module github.com/portapps/brave-portable
 
-go 1.15
+go 1.16
 
 require (
 	github.com/kevinburke/go-bindata v3.22.0+incompatible
-	github.com/portapps/portapps/v3 v3.2.2
+	github.com/portapps/portapps/v3 v3.3.0
 )
