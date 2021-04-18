@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.23.71-72 (2021/04/18)
+
+* Brave 1.23.71
+* Portapps 3.3.0
+* No more win32 release
+
 ## 1.20.110-71 (2021/02/25)
 
 * Brave 1.20.110
