@@ -5,7 +5,6 @@
 package main
 
 import (
-	"io/ioutil"
 	"os"
 	"path"
 
@@ -69,7 +68,7 @@ func main() {
 	if err != nil {
 		log.Error().Err(err).Msg("Cannot load asset Brave.lnk")
 	}
-	err = ioutil.WriteFile(shortcutPath, defaultShortcut, 0644)
+	err = os.WriteFile(shortcutPath, defaultShortcut, 0644)
 	if err != nil {
 		log.Error().Err(err).Msg("Cannot write default shortcut")
 	}
