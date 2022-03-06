@@ -13,7 +13,7 @@ jobs:
     steps:
       -
         name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       -
         name: Set up Go
         uses: actions/setup-go@v2
@@ -34,7 +34,7 @@ jobs:
         shell: bash
       -
         name: Checkout core
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: portapps/portapps
           ref: ${{ env.PORTAPPS_VERSION }}
