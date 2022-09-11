@@ -6,30 +6,7 @@ on:
 
 jobs:
   virustotal:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Prepare
-        id: prepare
-        run: |
-          echo ::set-output name=date::$(date -u +'%Y%m%d')
-      -
-        name: VirusTotal Monitor Scan
-        uses: crazy-max/ghaction-virustotal@v3
-        with:
-          vt_api_key: ${{ secrets.VT_MONITOR_API_KEY }}
-          vt_monitor: true
-          monitor_path: /portapps/${{ steps.prepare.outputs.date }}/${{ github.event.repository.name }}-${{ github.event.release.tag_name }}
-          update_release_body: false
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            ${{ github.event.repository.name }}-(win32|win64).exe
-      -
-        name: VirusTotal Scan
-        uses: crazy-max/ghaction-virustotal@v3
-        with:
-          vt_api_key: ${{ secrets.VT_API_KEY }}
-          update_release_body: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            ${{ github.event.repository.name }}-(win32|win64).exe
+    uses: portapps/.github/.github/workflows/app-virustotal.yml@master
+    secrets:
+      vt_api_key: ${{ secrets.VT_API_KEY }}
+      vt_monitor_api_key: ${{ secrets.VT_MONITOR_API_KEY }}
