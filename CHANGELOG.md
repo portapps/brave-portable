@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.43.89-84 (2022/09/11)
+
+* Brave 1.43.89
+* Bump github.com/kevinburke/go-bindata (#119)
+
 ## 1.42.88-83 (2022/08/13)
 
 * Brave 1.42.88
