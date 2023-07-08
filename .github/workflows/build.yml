@@ -7,13 +7,6 @@ on:
       - '*'
   pull_request:
 
-env:
-  GO_VERSION: "1.20"
-  NODE_VERSION: "16"
-  JAVA_VERSION: "11"
-  ANT_VERSION: "1.10.8"
-  JAVA_TOOL_OPTIONS: "-Dfile.encoding=UTF8"
-
 jobs:
   build:
     uses: portapps/.github/.github/workflows/app-build.yml@master
