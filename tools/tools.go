@@ -6,5 +6,6 @@
 package tools
 
 import (
+	_ "github.com/kevinburke/go-bindata/v4"
 	_ "github.com/portapps/portapps/v3/tools"
 )
