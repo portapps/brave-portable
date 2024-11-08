@@ -3,7 +3,7 @@ module github.com/portapps/brave-portable
 go 1.23
 
 require (
-	github.com/kevinburke/go-bindata v3.24.0+incompatible
+	github.com/kevinburke/go-bindata/v4 v4.0.2
 	github.com/portapps/portapps/v3 v3.13.0
 )
 
