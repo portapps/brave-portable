@@ -5,6 +5,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"path"
 
@@ -50,6 +51,7 @@ func main() {
 		"--disable-breakpad",
 		"--disable-machine-id",
 		"--disable-encryption-win",
+		"--update-feed-url=" + fmt.Sprintf("https://raw.githubusercontent.com/portapps/brave-portable/refs/tags/%s-%s/res/appcast.xml", app.Info.Version, app.Info.Release),
 	}
 
 	// Cleanup on exit
