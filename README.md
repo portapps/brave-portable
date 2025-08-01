@@ -22,6 +22,20 @@ The name Brave™ as well as related names, marks, emblems and images are regist
 Brave™ portable app made with 🚀 [Portapps](https://github.com/portapps).<br />
 Documentation and downloads can be found on https://portapps.io/app/brave-portable/
 
+## Optional Manual Update Process
+>    ![Notice](https://user-images.githubusercontent.com/69840998/227748193-206497fe-7c03-4ed6-a2a4-108718a004db.jpg) Follow these steps to manually update the portapps Brave browser when this projects official release is delayed
+- Download the self-extracting archive ["brave_installer-x64.exe"](https://brave-browser-downloads.s3.brave.com/latest/brave_installer-x64.exe) direct from Brave's server
+- **Don't** run the self-extracting app 
+>    ![extract](https://user-images.githubusercontent.com/69840998/227760543-018e2bca-bace-4584-8778-8ca33e504d84.jpg) Use an archive app (like 7zip, PeaZip, etc.) to open "brave_installer-x64.exe" and extract the "chrome.7z" file inside
+- Use your archive app to extract "chrome.7z" to a folder named "chrome"
+-  Open the subfolder '\Chrome-bin' inside "chrome" e.g. "chrome\Chrome-bin"
+- Close your portapps Brave browser
+- Locate and open the your portapps Brave folder
+- Inside that folder, open the subfolder '\app'. 
+- Delete all the outdated content (two files and one folder) inside the  '\app' subfolder. 
+>    ![Brave Steps](https://user-images.githubusercontent.com/69840998/227761271-559140af-3d5a-4c04-95bd-481b42bd871d.jpg) Replace the files with the content of subfolder '\Chrome-bin' (two files and one folder)
+- Restart your manually updated portapps Brave browser
+
 ## Contributing
 
 Want to contribute? Awesome! The most basic way to show your support is to star the project, or to raise issues. If
