@@ -1,12 +1,23 @@
 name: build
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
   push:
+    branches:
+      - 'master'
     tags:
       - '*'
   pull_request:
 
 jobs:
   build:
-    uses: portapps/.github/.github/workflows/app-build.yml@master
+    uses: portapps/.github/.github/workflows/app-build.yml@9eaba04d36be175c7cc876ba5c57cdd9ee6d9536 # v1.1.0
+    permissions:
+      contents: write # required to create a GitHub release on push with a tag

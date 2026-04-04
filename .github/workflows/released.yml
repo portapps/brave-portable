@@ -1,12 +1,21 @@
 name: released
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 on:
   release:
     types: [published]
 
 jobs:
   virustotal:
-    uses: portapps/.github/.github/workflows/app-virustotal.yml@master
+    uses: portapps/.github/.github/workflows/app-virustotal.yml@9eaba04d36be175c7cc876ba5c57cdd9ee6d9536 # v1.1.0
+    permissions:
+      contents: write # required to write GitHub Release body
     secrets:
       vt_api_key: ${{ secrets.VT_API_KEY }}
       vt_monitor_api_key: ${{ secrets.VT_MONITOR_API_KEY }}
