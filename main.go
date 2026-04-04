@@ -1,13 +1,13 @@
 //go:generate go install -v github.com/kevinburke/go-bindata/v4/go-bindata
 //go:generate go-bindata -prefix res/ -pkg assets -o assets/assets.go res/Brave.lnk
 //go:generate go install -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo
-//go:generate goversioninfo -icon=res/papp.ico -manifest=res/papp.manifest
 package main
 
 import (
 	"fmt"
 	"os"
 	"path"
+	"path/filepath"
 
 	"github.com/portapps/brave-portable/assets"
 	"github.com/portapps/portapps/v3"
@@ -42,7 +42,7 @@ func init() {
 
 func main() {
 	utl.CreateFolder(app.DataPath)
-	app.Process = utl.PathJoin(app.AppPath, "brave.exe")
+	app.Process = filepath.Join(app.AppPath, "brave.exe")
 	app.Args = []string{
 		"--user-data-dir=" + app.DataPath,
 		"--disable-brave-update",
@@ -104,18 +104,18 @@ func main() {
 		Arch: "32",
 	}
 
-	if err := bsRegKey.Import(utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
+	if err := bsRegKey.Import(filepath.Join(regsPath, "BraveSoftware.reg")); err != nil {
 		log.Error().Err(err).Msg("Cannot import registry key")
 	}
-	if err := bbdRegKey.Import(utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
+	if err := bbdRegKey.Import(filepath.Join(regsPath, "Brave-Browser-Development.reg")); err != nil {
 		log.Error().Err(err).Msg("Cannot import registry key")
 	}
 
 	defer func() {
-		if err := bsRegKey.Export(utl.PathJoin(regsPath, "BraveSoftware.reg")); err != nil {
+		if err := bsRegKey.Export(filepath.Join(regsPath, "BraveSoftware.reg")); err != nil {
 			log.Error().Err(err).Msg("Cannot export registry key")
 		}
-		if err := bbdRegKey.Export(utl.PathJoin(regsPath, "Brave-Browser-Development.reg")); err != nil {
+		if err := bbdRegKey.Export(filepath.Join(regsPath, "Brave-Browser-Development.reg")); err != nil {
 			log.Error().Err(err).Msg("Cannot export registry key")
 		}
 		if cfg.Cleanup {
