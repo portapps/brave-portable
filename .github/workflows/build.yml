@@ -18,6 +18,6 @@ on:
 
 jobs:
   build:
-    uses: portapps/.github/.github/workflows/app-build.yml@504fdded88e9b82399080e6d228791ab77213aec # v1.2.0
+    uses: portapps/.github/.github/workflows/app-build.yml@3b19d5c32283b0cd19affa9864488daaeeb5feac # v1.3.0
     permissions:
       contents: write # required to create a GitHub release on push with a tag
