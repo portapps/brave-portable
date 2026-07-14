@@ -1,0 +1,199 @@
+name: update-app
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *'
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    environment: update-app # secrets are gated by this environment
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      -
+        name: GitHub auth token from GitHub App
+        id: write-app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.PORTAPPS_BOT_CLIENT_ID }}
+          private-key: ${{ secrets.PORTAPPS_BOT_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+          permission-pull-requests: write
+      -
+        name: Checkout
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          token: ${{ steps.write-app.outputs.token }}
+          fetch-depth: 0
+          persist-credentials: false
+      -
+        name: Setup Go
+        uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6.5.0
+        with:
+          go-version-file: go.mod
+      -
+        name: Update Brave
+        id: update
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const sourceUrl = 'https://updates.bravesoftware.com/sparkle/Brave-Browser/stable/appcast.xml';
+
+            function workspacePath(relativePath) {
+              return path.join(process.env.GITHUB_WORKSPACE, relativePath);
+            }
+
+            function readFile(relativePath) {
+              return fs.readFileSync(workspacePath(relativePath), 'utf8');
+            }
+
+            function writeFile(relativePath, content) {
+              fs.writeFileSync(workspacePath(relativePath), content, 'utf8');
+            }
+
+            function propertyValue(content, name) {
+              const pattern = new RegExp(`^${name.replaceAll('.', '\\.')}\\s*=\\s*(.+)$`, 'm');
+              const match = content.match(pattern);
+              if (!match) {
+                throw new Error(`Missing ${name} in build.properties`);
+              }
+              return match[1].trim();
+            }
+
+            function replaceProperty(content, name, value) {
+              const pattern = new RegExp(`^(${name.replaceAll('.', '\\.')}\\s*=\\s*).+$`, 'm');
+              if (!pattern.test(content)) {
+                throw new Error(`Missing ${name} in build.properties`);
+              }
+              return content.replace(pattern, `$1${value}`);
+            }
+
+            function versionParts(version) {
+              if (!/^\d+(?:\.\d+)*$/.test(version)) {
+                throw new Error(`Invalid version: ${version}`);
+              }
+              return version.split('.').map(Number);
+            }
+
+            function compareVersions(left, right) {
+              const leftParts = versionParts(left);
+              const rightParts = versionParts(right);
+              for (let i = 0; i < Math.max(leftParts.length, rightParts.length); i++) {
+                const diff = (leftParts[i] || 0) - (rightParts[i] || 0);
+                if (diff !== 0) {
+                  return diff;
+                }
+              }
+              return 0;
+            }
+
+            function appVersion(shortVersionString) {
+              return shortVersionString.replace(/\.0$/, '');
+            }
+
+            function normalizeAppcast(appcast) {
+              return appcast
+                .replace(/\r\n/g, '\n')
+                .replace(/\r/g, '\n')
+                .replace(/[ \t]+$/gm, '')
+                .replace(/\n?$/, '\n');
+            }
+
+            function latestVersionFromAppcast(appcast) {
+              const versions = [...appcast.matchAll(/\bsparkle:shortVersionString="([^"]+)"/g)]
+                .map((match) => appVersion(match[1]));
+              const uniqueVersions = [...new Set(versions)];
+              if (uniqueVersions.length === 0) {
+                throw new Error(`No sparkle:shortVersionString values found in ${sourceUrl}`);
+              }
+              uniqueVersions.sort(compareVersions);
+              return uniqueVersions.at(-1);
+            }
+
+            async function fetchAppcast() {
+              const response = await fetch(sourceUrl, {
+                headers: {
+                  'user-agent': 'portapps/brave-portable update-app'
+                }
+              });
+              if (!response.ok) {
+                throw new Error(`Failed to fetch ${sourceUrl}: ${response.status} ${response.statusText}`);
+              }
+              return await response.text();
+            }
+
+            const latestAppcast = normalizeAppcast(await fetchAppcast());
+            const latestVersion = latestVersionFromAppcast(latestAppcast);
+            core.info(`Resolved latest stable Brave version: ${latestVersion}`);
+
+            const propertiesPath = 'build.properties';
+            const appcastPath = 'res/appcast.xml';
+            const currentProperties = readFile(propertiesPath);
+            const currentAppcast = readFile(appcastPath);
+            const currentVersion = propertyValue(currentProperties, 'app.version');
+            const currentRelease = Number(propertyValue(currentProperties, 'app.release'));
+            if (!Number.isInteger(currentRelease)) {
+              throw new Error(`Invalid app.release in ${propertiesPath}: ${currentRelease}`);
+            }
+
+            let updatedProperties = replaceProperty(currentProperties, 'app.version', latestVersion);
+            const metadataChanged = updatedProperties !== currentProperties || latestAppcast !== currentAppcast;
+            const nextRelease = metadataChanged ? currentRelease + 1 : currentRelease;
+            updatedProperties = replaceProperty(updatedProperties, 'app.release', String(nextRelease));
+
+            if (updatedProperties !== currentProperties) {
+              writeFile(propertiesPath, updatedProperties);
+              core.info(`Updated ${propertiesPath}`);
+            } else {
+              core.info(`${propertiesPath} is already up to date`);
+            }
+
+            if (latestAppcast !== currentAppcast) {
+              writeFile(appcastPath, latestAppcast);
+              core.info(`Updated ${appcastPath}`);
+            } else {
+              core.info(`${appcastPath} is already up to date`);
+            }
+
+            core.setOutput('title', `Brave ${latestVersion}`);
+            core.setOutput('version', latestVersion);
+            core.setOutput('previous-version', currentVersion);
+            core.setOutput('release', String(nextRelease));
+      -
+        name: Update assets
+        run: |
+          export PATH="$(go env GOPATH)/bin:${PATH}"
+          go generate -run go-bindata .
+      -
+        name: Create pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          base: ${{ github.event.repository.default_branch }}
+          branch: update-brave
+          token: ${{ steps.write-app.outputs.token }}
+          commit-message: ${{ steps.update.outputs.title }}
+          title: ${{ steps.update.outputs.title }}
+          signoff: true
+          sign-commits: true
+          delete-branch: true
+          body: |
+            This updates Brave to ${{ steps.update.outputs.version }}.
