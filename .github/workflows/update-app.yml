@@ -17,7 +17,7 @@ on:
 
 jobs:
   update:
-    runs-on: ubuntu-24.04
+    runs-on: windows-latest
     environment: update-app # secrets are gated by this environment
     timeout-minutes: 10
     permissions:
