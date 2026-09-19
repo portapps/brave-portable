@@ -1,4 +1,3 @@
-//go:generate go install -v github.com/josephspurrier/goversioninfo/cmd/goversioninfo
 package main
 
 import (
