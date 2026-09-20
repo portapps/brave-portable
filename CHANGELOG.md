@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.95.104-101 (2026/09/20)
+
+* Brave 1.95.104
+* Portapps 3.19.0
+* Bump github.com/josephspurrier/goversioninfo from 1.5.0 to 1.7.0
+
 ## 1.92.134-100 (2026/07/05)
 
 * Brave 1.92.134
