@@ -183,18 +183,6 @@ jobs:
             core.setOutput('version-changed', String(versionChanged));
             core.setOutput('metadata-changed', String(metadataChanged));
       -
-        name: Setup Go
-        if: steps.update.outputs.version-changed == 'true'
-        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version-file: go.mod
-      -
-        name: Update assets
-        if: steps.update.outputs.version-changed == 'true'
-        run: |
-          $env:PATH = "$(go env GOPATH)\bin;$env:PATH"
-          go generate -run go-bindata .
-      -
         name: Create pull request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
@@ -228,18 +216,6 @@ jobs:
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: *update-script
-      -
-        name: Setup Go
-        if: steps.update.outputs.version-changed == 'true'
-        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version-file: go.mod
-      -
-        name: Update assets
-        if: steps.update.outputs.version-changed == 'true'
-        run: |
-          $env:PATH = "$(go env GOPATH)\bin;$env:PATH"
-          go generate -run go-bindata .
       -
         name: Show diff
         shell: pwsh
