@@ -2,7 +2,10 @@ module github.com/portapps/brave-portable
 
 go 1.26.0
 
-require github.com/portapps/portapps/v3 v3.19.0
+require (
+	github.com/portapps/portapps/v3 v3.19.0
+	golang.org/x/sys v0.47.0
+)
 
 require (
 	github.com/akavel/rsrc v0.10.2 // indirect
@@ -15,7 +18,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rs/zerolog v1.35.1 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
-	golang.org/x/sys v0.47.0 // indirect
 )
 
 tool github.com/josephspurrier/goversioninfo/cmd/goversioninfo
